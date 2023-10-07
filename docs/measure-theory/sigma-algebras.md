@@ -19,7 +19,7 @@ In plain words, (1) requires that measuring a set that can be decomposed as a co
 
 The requirements do not hold simultaneously all the time, that is, there exist cases in which these three conditions are not *mutually consistent*. We provide a classic counterexample.
 
-Suppose we have an equivalence relation $x\sim y$ if and only if $|x-y| = r$ for any $x \in [0,1]$. Here $r$ is a rational number in the unit simplex of $\mathbf{R}^1$, i.e. $r \in \mathbf{Q}\cap [0,1]$. Let $N \subseteq [0,1)$ be the set that contains one element from each equivalence class (invoking axiom of choice). 
+Suppose we have an equivalence relation $x\sim y$ if and only if $\|x-y\| = r$ for any $x \in [0,1]$. Here $r$ is a rational number in the unit simplex of $\mathbf{R}^1$, i.e. $r \in \mathbf{Q}\cap [0,1]$. Let $N \subseteq [0,1)$ be the set that contains one element from each equivalence class (invoking axiom of choice). 
 
 For each rational in the unit simplex, define $N_r$,
 $$N_r=\{x+r : x \in N\cap[0,1-r)\} \cup \{x+r-1: x\in N\cap[r-1, 1)\}$$
