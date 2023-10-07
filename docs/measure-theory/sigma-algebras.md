@@ -22,6 +22,7 @@ The requirements do not hold simultaneously all the time, that is, there exist c
 Suppose we have an equivalence relation $x\sim y$ if and only if $\|x-y\| = r$ for any $x \in [0,1]$. Here $r$ is a rational number in the unit simplex of $\mathbf{R}^1$, i.e. $r \in \mathbf{Q}\cap [0,1]$. Let $N \subseteq [0,1)$ be the set that contains one element from each equivalence class (invoking axiom of choice). 
 
 For each rational in the unit simplex, define $N_r$,
+
 $$N_r=\{x+r : x \in N\cap[0,1-r)\} \cup \{x+r-1: x\in N\cap[r-1, 1)\}$$
 
 That is, $N_r$ is exactly a shifted $N$ (by some rational), and for the part that extends past 1, chop off and prepend to the shifted interval, so that $N$ is constrained to be inside of $[0,1)$. Thus $\mu(N_r) = \mu(N)$ due to translational invariance.
