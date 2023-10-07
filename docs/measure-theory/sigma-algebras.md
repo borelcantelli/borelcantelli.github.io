@@ -28,7 +28,7 @@ That is, $N_r$ is exactly a shifted $N$ (by some rational), and for the part tha
 
 For each $x \in [0, 1)$, there exists a unique $r$ such that $x \in N_r$. This is true since $N$ and $N_r$ contain members within each equivalence class. That is, indeed there exists a unique $y$ in $N$ such that $x\sim y$ (forms an equivalence class with $x$). If $y\leq x$ then $x \in N_r = N_{x-y}$ otherwise, $x\in N_r = N_{1+x-y}$. So $x$ must be in some $N_r$. 
 
-This also means the disjoint union $c$ since all $x \in [0, 1)$ is in $N_r$ for any $r$. Now use the three properties of the measure. First,
+This also means the disjoint union $\cup_r N_r$ since all $x \in [0, 1)$ is in $N_r$ for any $r$. Now use the three properties of the measure. First,
 
 $$1 \stackrel{(3)}{=} \mu([0,1)) \stackrel{\cup_r N_r = [0, 1)}{=} \mu(\cup_r N_r) \stackrel{(1)}{=} \sum_r \mu(N_r) \stackrel{N_r \sim N \oplus r}{=} \sum_r \mu(N) = \infty$$
 
@@ -36,3 +36,4 @@ Of course, the last equality holds since $\mu(N)$ is a constant over all $r$, an
 
 Our remedy is to not require measure laws to hold on all subsets, but specifically on a subset called the measureable sets. We can also denote this as $\mathcal{L}^n$ which is a subset of $2^{\mathbf{R}^n}$ (power set of reals). $\mathcal{L}^n$ is specifically, the set of all measurable sets in $\mathbf{R}^n$. 
 
+(It is of tangential importance to note that we must accept the axiom of choice to produce this counter example)
