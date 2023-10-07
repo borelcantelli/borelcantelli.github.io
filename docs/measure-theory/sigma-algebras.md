@@ -19,5 +19,7 @@ In plain words, (1) requires that measuring a set that can be decomposed as a co
 
 The requirements do not hold simultaneously all the time, that is, there exist cases in which these three conditions are not *mutually consistent*. We provide a classic counterexample.
 
-
-
+Suppose we have an equivalence relation $x\sim y$ if and only if $|x-y| = r$ for any $x \in [0,1]$. Here $r$ is a rational number in the unit simplex of $\mathbf{R}^1$, i.e. $r \in \mathbf{Q}\cap [0,1]$. That is, the set $N_r$, for all $r$, can be given by
+$$
+N_r = 
+$$
