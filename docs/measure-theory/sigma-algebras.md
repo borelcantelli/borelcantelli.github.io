@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Typography
+title: Sigma Algebras
 parent: Measure Theory
 nav_order: 1
 ---
