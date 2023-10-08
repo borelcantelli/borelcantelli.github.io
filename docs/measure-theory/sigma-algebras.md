@@ -45,7 +45,7 @@ $$\sigma(X) = \bigcap_{\mathcal{F} : \mathcal{F} \in \mathcal{G}} \mathcal{F}$$
 
 In otherwords, it is the intersection of all $\sigma$-algebras that contain $X$. 
 
-## Why Sigma Algebras
+## Why Sigma Algebras and Smallest Sigma Algebras
 
 At this point, we should wonder why we care about $\sigma$-algebras. $\sigma$-algebras have the unique property in that they are closed under countable unions. Futhermore, we can think of this as related to measure theory in that:
 
@@ -55,4 +55,18 @@ At this point, we should wonder why we care about $\sigma$-algebras. $\sigma$-al
 
 3. If we can measure each object in a potentially infinite and countable set, then we should be able to measure the combination of all of items in the set collectively.
 
+Dealing with the smallest $\sigma$-algebra provides a notion of how much information is in a set. For example, suppose I draw random integers from $\{1,2,3,4\}$. I can generate the smallest $\sigma$-algebra from the set $\{(1,2), (3,4)\}$. This $\sigma$-algebra will be:
 
+$$\mathcal{F} := \{\varnothing, \{1,2\}, \{3,4\}, \{1,2,3,4\} \}$$
+
+Now suppose I generate the smallest $\sigma$-algebra from $\{\{1\}, \{2\}, \{3\}, \{4\}\}$. That is, I want the smallest $\sigma$-algebra that contains each possible outcome. Then the $\sigma$-algebra will be"
+
+$$\mathcal{G} := \{\varnothing, \{1\}, \{2\}, \{3\}, \{4\}, \{1,2\}, \{2, 3\}, \{1,4\}, \{3,4\}, ...,  \{1,2,3,4\} \}$$
+
+It will have $2^4$ elements in it, and note that this $\sigma$-algebra is contains the previous one, i.e. $\mathcal{F} \subset \mathcal{G}$. We say that $\mathcal{G}$ is *finer* than $\mathcal{F}$. We also say that $\mathcal{G}$ provides more information that $\mathcal{F}$. 
+
+To see this, imagine someone stuck in a room and is drawing random numbers. You this person a set of index card, and each index card corresponds to an element of $\mathcal{F}$. They must return you the index card corresponding to the smallest element of $\mathcal{F}$ that contains the number from their draw. So if they draw a 2, they return the index card corresponding to $\{1,2\}$. 
+
+Now imagine there is another person stuck in another room, and they are playing the same random game with the same rules, except this time, they are given index card, where each card corresponds to an element of $\mathcal{G}$. They must return you the index card corresponding to the smallest element of $\mathcal{G}$ that contains the number of their draw. 
+
+In both rooms, the same game is being played, but you receive index cards with differing information. Clearly, the index cards from the $\mathcal{G}$ regime is more informative, as when a 2 is drawn, you will receive the card corresponding to $\{2\}$. 
