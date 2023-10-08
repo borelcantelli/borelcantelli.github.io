@@ -134,7 +134,7 @@ So $\mathcal{M}$ is identical to sets that are at least closed under complementa
 So $\mathcal{M}$ is closed under complementation, and countable intersection, so it is a $\sigma$-algebra, that obviously contains $G$. Thus $\sigma(G) \subseteq \mathcal{M}$. By the first line, we have enough to say that $\sigma(G) = \mathcal{M}$. **QED**
 
 
-### Monotone Class Theorem Discussion
+### Proof Technique Discussion
 
 This proof contains several elements of typical proofs in measure theory. 
 
