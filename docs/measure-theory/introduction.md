@@ -5,6 +5,15 @@ parent: Measure Theory
 nav_order: 1
 ---
 
+# Navigation Structure
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 # What is a Measure
 
 A measure is a function $\mu$ that takes a set $A$ (typically in $\mathbf{R}^n$) and maps it to the range $[0,\infty]$. We would ideally hope that this function $\mu$ satisfies the following basic requirements for any subset of $\mathbf{R}^n$:

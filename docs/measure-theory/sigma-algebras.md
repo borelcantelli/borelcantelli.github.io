@@ -6,6 +6,16 @@ nav_order: 2
 has_toc: true
 ---
 
+# Navigation Structure
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+
 # Sigma Algebra
 
 ## TLDR
@@ -26,7 +36,7 @@ We should keep in mind the type of subsets of real numbers that we can measure. 
 2. If $X \in A$ then $X^C \in A$
 3. If $X_1,...,X_n$ is a collection of finite countable sets in $A$, then its union $\cup_{i=1}^n X_i \in A$
 
-If we further relax the condition (3) to being just countable sets (finite or infinite), $A$ becomes a $\sigma$-algebra and is usually denoted with script $\mathcal{A}$. That is:
+If we change condition (3) to being just countable sets (finite or infinite), $A$ becomes a $\sigma$-algebra and is usually denoted with script $\mathcal{A}$. That is:
 
 **Definition**: Given an ambient space $\Omega$, a $\sigma$**-algebra** $\mathcal{A}$ endowed on the space satisfies the following constraints:
 
@@ -48,7 +58,7 @@ We can even generate $\sigma$-algebras by taking intersections. As seen in the p
 
 This is a question of interest since we would ideally like to consider $\sigma$-algebras that contain $X$, which means it must contain $X^C$ and all countable unions that involve $X$ or $X^C$. We denote this as $\sigma(X)$. 
 
-**Definition**: Let $\mathcal{G}$ be the collection of all possible $\sigma$-algebras that can be made on $\Omega$. Let $\mathcal{F}$ be the collection of all $\sigma$-algebras that contain $X\in\Omega$. The smallest $\sigma$-algebra endowed on $\Omega$ that contains a set $X\in\Omega$ is:
+**Definition**: Let $\mathcal{G}$ be the collection of all possible $\sigma$-algebras that can be made on $\Omega$ that contain $X$. The smallest $\sigma$-algebra endowed on $\Omega$ that contains a set $X\in\Omega$ is:
 
 $$\sigma(X) = \bigcap_{\mathcal{F} : \mathcal{F} \in \mathcal{G}} \mathcal{F}$$
 
