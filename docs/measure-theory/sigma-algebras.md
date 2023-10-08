@@ -2,7 +2,7 @@
 layout: default
 title: Sigma Algebras
 parent: Measure Theory
-nav_order: 1
+nav_order: 2
 ---
 
 # Sigma Algebra
