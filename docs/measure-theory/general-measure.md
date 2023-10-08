@@ -75,7 +75,9 @@ $$\mu(\cup_{i>0}E_i) = \mu(\sqcup_{i>0} B_i) = \sum_{i>0} \mu(B_i) = \sum_{i > 1
 $$\mu(E_1) = \mu(\cup F_i) = \mu(E_1 \setminus \cap E_i) = \mu(E_1) - \mu(\cap E_i)$$
 
 $$\implies \mu(\cup F_i) +\mu(\cap E_i) = \mu(E_1)$$
+
 $$\implies \lim_i \mu(F_i) = \lim_j \mu(E_1) - \mu(E_j) + \mu(\cap E_i)$$
+
 $$\implies \lim_i \mu(E_i) = \mu(\cap E_i)$$
 
 **Exercise**: Prove that $\mu(\liminf A_n) \leq \liminf \mu(A_n) \leq \limsup \mu(A_n) \leq \mu(\limsup A_n)$. *Hint: $\liminf A_n \equiv \cup_{N> 0}\cap_{n > N} A_n$ and $\limsup A_n \equiv \cap_{N>0}\cup_{n > N}A_n$. Use the above properties to show this.*
