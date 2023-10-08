@@ -3,9 +3,7 @@ layout: default
 title: Sigma Algebras
 parent: Measure Theory
 nav_order: 2
-toc: 
-  min_level: 1
-
+has_toc: true
 ---
 
 # Sigma Algebra
