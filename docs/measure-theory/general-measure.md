@@ -43,7 +43,7 @@ A few more definitions given $(\Omega, \mathcal{A}, \mu)$:
 
 **Exercise**: Show that the counting measure is a measure. *Hint: The counting measure is a mapping between a set and its cardinality, and takes the value $\infty$ when a set is at least countably infinite.*
 
-**Exercise**: If $\mu$ is a measure on $(\Omega, \mathcal{F})$ then define $\mu_B(\cdot) = \mu(\cdot \cap B)$. Show that $\mu_B$ is also a measure on $(\Omega, \mathcal{F})$.
+**Exercise**: If $\mu$ is a measure on $(\Omega, \mathcal{F})$ then define $\mu_B(\cdot) = \mu(\cdot \cap B)$ where $B \in \mathcal{F}$. Show that $\mu_B$ is also a measure on $(\Omega, \mathcal{F})$.
 
 ## Measure Space
 
@@ -85,4 +85,10 @@ $$\implies \lim_i \mu(E_i) = \mu(\cap E_i)$$
 # Null Sets and Complete Measures
 
 Given a measure space, $(\Omega, \mathcal{A}, \mu)$, a **null set** is a set $A\in \mathcal{A}$ such that $\mu(A) = 0$. A statement is true **almost everywhere** if the statement is true on all sets, but not necessarily the null sets. $\mu$ is a **complete measure** if $\mathcal{A}$ includes all subsets of null sets.
+
+We can extend a measure to be complete. That is, given $(\Omega, \mathcal{F}, \mu)$, we can extend it to $(\Omega, \bar{\mathcal{M}}, \bar{\mu})$, the completion of the measure space.
+
+Let $(\Omega, \mathcal{F}, \mu)$ be a measure space. Let $\mathcal{N} := \{N \in \mathcal{M} : \mu(N) = 0\}$. Define $\bar{\mathcal{M}} = \{E \cup F : E\in\mathcal{M},\, F\subset N, \forall N \in \mathcal{N}\}$. Then $\bar{\mathcal{M}}$ is a $\sigma$-algebra and there exists a unique $\bar{\mu}$ that extends the measure $\mu$ onto $\bar{\mathcal{M}}$. That is $\bar{\mathcal{M}}$ is the completion of $\mathcal{M}$ with respect to $\mu$.
+
+
 
