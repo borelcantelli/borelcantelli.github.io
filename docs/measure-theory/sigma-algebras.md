@@ -149,6 +149,43 @@ In other words, suppose we wish to show an "infinite" property holds for a set t
 2. Use the limited infinite properties to generalize to the desired inifinite property.
 
 
+## $\pi$ and $\lambda$ Systems
+
+Sometimes, we do not wish to work with set logics that are as demanding as an algebra. We introduce two of such set logics:
+
+**Definition**: $\mathcal{P}$ is a $\pi$-system if $A, B \in \mathcal{P}$ means that $A \cap B$ is in $\mathcal{P}$ too. That is, closure under finite unions.
+
+**Definition**: $\mathcal{L}$ is a $\lambda$-system if:
+
+1. $\varnothing \in \mathcal{L}$
+2. If $A \in \mathcal{L}$ then $A^C \in \mathcal{L}$
+3. If $A_1,A_2,...$ are all disjoint, then $A_\infty \in \mathcal{L}$ too.
+
+That is, every $\sigma$-algebra must be a $\lambda$-system, since $\sigma$-algebras require closure under disjoint unions as well. But the reverse need not be true. Counter examples are easy.
+
+**Lemma**: Every $\pi$-system that is also a $\lambda$-system forms a $\sigma$-algebra.
+
+*Proof*: Let $X$ be a $\pi$ and $\lambda$-system. $\varnothing$ and complementation is free since it is in the $\lambda$-system. Consider any set $A_1,...,A_n \in X$. Let $B_1 = A_1, B_2 = A_2 \setminus A_1$, and in general $B_k = A_k \setminus \cup_{j=1}^{k-1}A_{j}$. 
+
+$B_k$ is in $X$ since $A_k \in X$ and set differencing can be written as follows:  $\setminus \cup_{i=1}^{k-1} A_i = \cap (\cup_{i=1}^{k-1} A_i)^C = \cap_{i=1}^{k-1} A_i^C$. As $A_1,...,A_n \in X$, the complements $A_i^C$ are in $X$ by the $\lambda$-system property. By the $\pi$-system property, finite intersections are closed. So for any finite $k$, $B_k \in X$. $B_\infty \in X$ by the $\lambda$-system closure of countable disjoint unions.
+
+Now note that $B_\infty = A_\infty$, $A_\infty \in X$. Thus $X$ is closed under countable unions, and thus is a $\sigma$-algebra. **QED**
+
+**Lemma**: A $\lambda$-system is closed under set differences i.e. if $A, B \in \mathcal{L}$ and $A \supset B$, then $A \setminus B \in \mathcal{L}$.
+
+*Proof*: First, note that $A \setminus B = A \cap B^C$ and we can also use DeMorgans to write this as $(A^C \cup B)^C$. Now, $A^C \cup B \in \mathcal{L}$ since $A^C$ and $B$ are disjoint, indeed, because $A \supset B$. And since this union is in $\mathcal{L}$, its complement is in $\mathcal{L}$. So $A \setminus B \in \mathcal{L}$. **QED**
+
+**Exercise**: An intersection of any $\lambda$-systems is still a $\lambda$-system. *Hint: This proof follows closely with the proof on intersections of $\sigma$-algebras.*
+
+**Exercise**: Let $P$ be a $\pi$-system, and $l(P)$ be the smallest $\lambda$-system that contains $P$, both endowed on $X$. Show that $l(P)$ is a $\sigma$-algebra. 
+
+*Hint: By the first lemma above, it is sufficient to show that $l(P)$ is a $\pi$-system. Do this by defining $\mathcal{D} :=\{E \subset X : A \cap B \in l(P);\; \forall A \in l(P)\}$ and showing it is a $\lambda$-system that contains $P$. Then show that $\mathcal{D}$ is closed under finite intersections, and you are done.*
+
+**Theorem**: (Dynkin's $\pi-\lambda$ Theorem): Let $P$ be a $\pi$-system on $\Omega$ and $L$ be a $\lambda$-system on $\Omega$. Also suppose $P \subset L$. Then $\sigma(P) \subseteq L$.
+
+*Proof*: We start with $P \subseteq L$. As $l(P)$ is the smallest $\lambda$-system containing $P$, then $l(P) \subseteq L$. Now $l(P)$ is a $\sigma$-algebra containing $P$, so $l(P) \supseteq P$, and $\sigma(P) \subset l(P) \subset L$. Thus we have shown that $\sigma(P) \subseteq L$. 
+
+As every $\sigma$-algebra containing $P$ is also a $\lambda$-system containing $P$, we also have that $L(P) \subseteq \sigma(P)$, therefore, $L(P) = \sigma(P)$. **QED**
 
 
 
