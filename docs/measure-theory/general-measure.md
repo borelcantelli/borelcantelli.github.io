@@ -88,7 +88,43 @@ Given a measure space, $(\Omega, \mathcal{A}, \mu)$, a **null set** is a set $A\
 
 We can extend a measure to be complete. That is, given $(\Omega, \mathcal{F}, \mu)$, we can extend it to $(\Omega, \bar{\mathcal{M}}, \bar{\mu})$, the completion of the measure space.
 
-Let $(\Omega, \mathcal{F}, \mu)$ be a measure space. Let $\mathcal{N} := \{N \in \mathcal{M} : \mu(N) = 0\}$. Define $\bar{\mathcal{M}} = \{E \cup F : E\in\mathcal{M},\, F\subset N, \forall N \in \mathcal{N}\}$. Then $\bar{\mathcal{M}}$ is a $\sigma$-algebra and there exists a unique $\bar{\mu}$ that extends the measure $\mu$ onto $\bar{\mathcal{M}}$. That is $\bar{\mathcal{M}}$ is the completion of $\mathcal{M}$ with respect to $\mu$.
+Let $(\Omega, \mathcal{M}, \mu)$ be a measure space. Let $\mathcal{N} := \{N \in \mathcal{M} : \mu(N) = 0\}$. Define $\bar{\mathcal{M}} = \{E \cup F : E\in\mathcal{M},\, F\subset N, \forall N \in \mathcal{N}\}$. Then $\bar{\mathcal{M}}$ is a $\sigma$-algebra and there exists a unique $\bar{\mu}$ that extends the measure $\mu$ onto $\bar{\mathcal{M}}$. That is $\bar{\mathcal{M}}$ is the completion of $\mathcal{M}$ with respect to $\mu$.
+
+*Proof*: First, we can show that $\bar{\mathcal{M}}$ is a $\sigma$-algebra by showing closure under complements and countable unions. 
+
+Consider a countable sequence of $M_1,... \in \bar{\mathcal{M}}$. Then for each $i$, we can decompose $M_i = E_i \cup F_i$, and 
+
+$$\cup_{i > 0} M_i = \cup_{i> 0} E_i \cup F_i = \cup_{i>0}E_i \bigcup \cup_{i>0} F_i$$
+
+Since $\cup_{i>0}E_i \in \mathcal{M}$ and $\cup_{i>0} F_i \in \mathcal{N}$ (indeed, $F_i \subset N$ so $\mu(F_i) = 0$, and $\mu(\cup F_i) = 0$, thus it is in $\mathcal{N}$). So we have closure under countable unions.
+
+To show closure of complementation, we need to note that $E \cap F = \varnothing$. This is implied by construction of our sets. Indeed, let $E \cup F = E \sqcup F \setminus E$. Now $F \setminus E \subseteq N \setminus E$ since $F \subseteq N$.  And $N \setminus E$ still has measure 0, so $N \setminus E \in \mathcal{N}$. WLOG, $E \cap \mathcal{N} = \varnothing$, that is $E$ is disjoint from any element in $\mathcal{N}$.
+
+Now let $M \in \bar{\mathcal{M}}$, so there exists an $E\in\mathcal{M}$ and a $F \in \mathcal{M}$ s.t. $E \cup F \in \mathcal{M}$. We want to show closure of $(E \cup F)^C$ or $E^C \cap F^C$.
+
+$$E^C \cap F^C = E^C \cap (N^C \cup N \cap F^C) = (E^C \cap N^C) \cup (N \cap F^C)$$
+
+$E^C \in \mathcal{M}$ is obvious. $N^C \in \mathcal{M}$ is true since $N$ is measurable and thus is in $\mathcal{M}$. $N \cap F^C$ is still a measure 0 set, so it is still in $\mathcal{N}$. Thus $(E^C \cap N^C) \in \mathcal{M}$ and $(N \cap F^C) \in \mathcal{N}$ so its union must be in $\bar{\mathcal{M}}$.
+
+$\varnothing \in \bar{\mathcal{M}}$ is free.
+
+Second, we show the completion of the measure exists. We do this by defining the completion of $\mu$ on the sets in $\bar{\mathcal{M}}$, and dictate that the measure and its completion agree on $\mathcal{M}$-sets. For $E \in \mathcal{M}$ and $F \in \mathcal{N}$, 
+
+$$\mu(E) = \bar{\mu}(E) \leq \bar{\mu}(E \cup F) \leq \bar{\mu}(E \cup N) \leq \bar{\mu}(E) + \bar{\mu}(N) = \mu(E)$$
+
+Therefore, we can deduce that $\bar{\mu}(E\cup F) = \mu (E)$. That is, any set in $\bar{\mathcal{M}}$ can be measured with $\bar{\mu}$ as defined by the previous.
+
+Now for any two equal sets in $\bar{\mathcal{M}}$, namely of the forms. $E_1 \cup F_1 = E_2 \cup F_2$, we aim to show that $\mu(E_1) = \mu(E_2)$ (this is simply by definition of $\bar{\mu}$).
+
+$$\mu(E_1) \leq \mu(E_1 \cup F_1) = \mu(E_2 \cup F_2) \leq \mu(E_2  \cup N) = \mu(E_2)$$
+
+$$\mu(E_2) \leq \mu(E_2 \cup F_2) = \mu(E_1 \cup F_1) \leq \mu(E_1 \cup N) =\mu(E_2)$$
+
+As $\mu(E_1) = \mu(E_2) \iff \bar{\mu}(E_1 \cup F_1) = \bar{\mu}(E_2 \cup F_2)$, then it must be that $\bar{\mu}$ agrees on equivalent sets, hence unique. Furthermore, $\bar{\mu}$ is a complete measure of $\bar{\mathcal{M}}$ since $\bar{\mathcal{M}}$ contains all subsets of null sets by contruction on which $\bar{\mu}$ is defined.
+
+
+
+
 
 
 
