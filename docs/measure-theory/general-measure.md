@@ -23,7 +23,8 @@ has_toc: true
 1. A measure function is endowed upon a measure space and must assign the empty set to a measure of 0, and must be countably additive.
 2. A measure space must satisfy monotonicity, subadditivity, and continuity from above and below.
 3. Complete measures deal with null sets, which are sets with measure 0. This gives rise to the term $P$-almost everywhere, which means that proposition $P$ holds for all sets except for the null sets.
-4. Outer measures 
+4. Outer measures do not satisfy requirements of measures - by definition, but they induce a measurable space
+5. This induction of a measurable space allows extensions to be made on measures defined on simpler spaces. Most importantly, Caratheodory's extension theorem.
 
 ## Measure Functions and its Types
 
