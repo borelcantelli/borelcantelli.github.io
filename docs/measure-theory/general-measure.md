@@ -283,7 +283,7 @@ This theorem tells us that the outer measure, induced by the premeasure on an al
 
 This next theorem is commonly accepted as the most powerful application of Caratheodory's Theorem. It is what gives it the name, *Caratheodory's extension thoerem* used in probability theory - in particular, to prove Fubini's theorem on joint probability spaces. 
 
-**Theorem**: Let $m_0$ be a premeasure defined on algebra $A$ and $\mathcal{F} := \sigma(A)$. Then there exists a measure $\mu$ on $\mathcal{F}$, such that $\mu = m^*|_{\mathcal{F}}$ and $m|_{A} = m_0$. Furthermore, if $\nu$ is another measure defined on $\mathcal{F}$ that extends from $m_0$, then $\nu(E) \leq \mu(E)$ for all $\mathcal{F}$-measurable sets, with equality when $\mu(E)$ is finite.
+**Theorem**: Let $m_0$ be a premeasure defined on algebra $A$ and $\mathcal{F} := \sigma(A)$. Then there exists a measure $\mu$ on $\mathcal{F}$, such that $\mu = m^*\|_{\mathcal{F}}$ and $m\|_{A} = m_0$. Furthermore, if $\nu$ is another measure defined on $\mathcal{F}$ that extends from $m_0$, then $\nu(E) \leq \mu(E)$ for all $\mathcal{F}$-measurable sets, with equality when $\mu(E)$ is finite.
 
 *Proof*: The existence of such a measure with said conditions is a consequence of the theorem above. Now onto uniqueness and $\nu$.
 
