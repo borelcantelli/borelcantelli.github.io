@@ -283,11 +283,27 @@ This theorem tells us that the outer measure, induced by the premeasure on an al
 
 This next theorem is commonly accepted as the most powerful application of Caratheodory's Theorem. It is what gives it the name, *Caratheodory's extension thoerem* used in probability theory - in particular, to prove Fubini's theorem on joint probability spaces. 
 
-**Theorem**: Let $m_0$ be a premeasure defined on algebra $A$ and $\mathcal{F} := \sigma(A)$. Then there exists a measure $\mu$ on $\mathcal{F}$, such that $m|_{A} = m_0$. Furthermore, if $\nu$ is another measure defined on $\mathcal{F}$ that extends from $m_0$, then $\nu(E) \leq \mu(E)$ for all $\mathcal{F}$-measurable sets, with equality when $\mu(E)$ is finite.
+**Theorem**: Let $m_0$ be a premeasure defined on algebra $A$ and $\mathcal{F} := \sigma(A)$. Then there exists a measure $\mu$ on $\mathcal{F}$, such that $\mu = m^*|_{\mathcal{F}}$ and $m|_{A} = m_0$. Furthermore, if $\nu$ is another measure defined on $\mathcal{F}$ that extends from $m_0$, then $\nu(E) \leq \mu(E)$ for all $\mathcal{F}$-measurable sets, with equality when $\mu(E)$ is finite.
 
-*Proof*: 
+*Proof*: The existence of such a measure with said conditions is a consequence of the theorem above. Now onto uniqueness and $\nu$.
 
+Let $E \in \mathcal{F}$. Given some sequence of $A_i \in A$ such that $E \subseteq \sqcup_i A_i$:
 
+$$\nu(E) \leq \sum \nu(A_i) = \sum \mu_0(A_i) \leq \mu(E)$$
+
+Thus $\nu(E) \leq \mu(E)$. Now suppose we restrict $\mu(E) < \infty$. Then it suffices to show $\nu(E) \geq \mu(E)$ to demonstrate equality after combining it with the immediately above result.
+
+Select some $E \subseteq \sqcup_i A_i$ with each $A_i \in \mathcal{A}$, such that:
+
+$$\mu(E) < \sum m_0(A_i) = \mu(\sqcup_i A_i) \text{ equivalently } \mu(E) + \varepsilon \geq \mu(\sqcup_i A_i)$$
+
+(Remember that $m_0 = \mu$ on $\mathcal{A}$ and $A_i$ are disjoint.) As $E \subseteq \sqcup A_i$, $\mu(\sqcup A_i \setminus E) = \mu(\sqcup_i A_i) - \mu(E) \leq \varepsilon$ from above. We can do so since $\mu(E) < \infty$. Thus, $\nu$ which is always at least bounded by $\mu$ from the result above, we get $\nu(\sqcup A_i \setminus E) = \nu(\sqcup A_i) - \nu(E) \leq \varepsilon$. Then:
+
+$$\nu(E) \geq \nu(\sqcup A_i) - \varepsilon \geq \mu(E) - \varepsilon$$
+
+Since $\varepsilon$ is arbitrary, then $\nu(E) \geq \mu(E)$. Combining with $\nu(E) \leq \mu(E)$, we arrive at $\nu(E) = \mu(E)$ once we require $\mu(E)<\infty$. **QED**
+
+So this theorem is proven by first, establishing existence via the previous theorem, and demonstrating uniqueness of measures by showing the measures agree. This mechanism works by using some disjoint covering of $E$ which is possible from the definition of the premeasure and induced outer measure. Then using properties of subadditivity, and an epsilon room argument, we arrive at the conclusion. It allows us to state that a single measure exists from the extension of a premeasure on an algebra. 
 
 
 
