@@ -127,122 +127,122 @@ As $\mu(E_1) = \mu(E_2) \iff \bar{\mu}(E_1 \cup F_1) = \bar{\mu}(E_2 \cup F_2)$,
 
 In integration, we require that the upper Riemann sum and the lower Riemann sum converge to be integrable. That is, as partitions get finer, the upper sum descends down to the true area, while the lower sum ascends to the true area. The **outer measure** is inspired by the upper sum. 
 
-The **outer measure** $\mu^0$ is any measure function that satisfies:
+The **outer measure** $\mu^O$ is any measure function that satisfies:
 
-1. $\mu^0(\varnothing) = 0$
-2. Monotonicity: $\mu^0(A) \leq \mu^0(B)$ if $A \subseteq B$
-3. Subadditivity: $\mu^0(\cup_i A_i) \leq \sum_i \mu^0(A_i)$
+1. $\mu^O(\varnothing) = 0$
+2. Monotonicity: $\mu^O(A) \leq \mu^O(B)$ if $A \subseteq B$
+3. Subadditivity: $\mu^O(\cup_i A_i) \leq \sum_i \mu^O(A_i)$
 
 A particular outer measure is the **Lebesgue outer measure** defined on the space $\Omega$. It is defined as:
 
-$$\mu^0(A) = \inf\left\{ \sum_{i=1}^\infty \lambda(E_i) : A \subseteq \bigcup_{i=1}^\infty E_i;\; \forall E_i \in \mathcal{E}\right \}$$
+$$\mu^O(A) = \inf\left\{ \sum_{i=1}^\infty \lambda(E_i) : A \subseteq \bigcup_{i=1}^\infty E_i;\; \forall E_i \in \mathcal{E}\right \}$$
 
 Here $\lambda$ is the Lebesgue measure. For now we define this as $\lambda: \mathcal{E} \to [0, \infty]$ for $\mathcal{E} \subseteq 2^\Omega$. $\lambda(\varnothing) = 0$. From the definition, there is nothing from stopping us to restrict $A$ to any $\sigma$-algebra. In fact, $A$ can be anything in $2^\Omega$. 
 
 Intuitively, this is the "smallest" measure of all measurements made on coverings of $A$, the set of interest.
 
-**Exercise**: Prove that $\mu^0$ satisfies monotonicity
+**Exercise**: Prove that $\mu^O$ satisfies monotonicity
 
 For subadditivity:
 
-*Proof*: Given a countable collection of $A_1,...$, define a covering made by $E_i^j$. Specifcally, we cover each $A_i$ with a set of $\{E_{i,j}^k\}_{j>0}$ such that the covering is slightly larger than $A_i$. Specifically, we fulfill the condition $\sum_j \lambda(E_{i,j}^k) \leq \mu^0(A_k) + \frac{\varepsilon}{2^k}$ for some $\varepsilon > 0$.
+*Proof*: Given a countable collection of $A_1,...$, define a covering made by $E_i^j$. Specifcally, we cover each $A_i$ with a set of $\{E_{i,j}^k\}_{j>0}$ such that the covering is slightly larger than $A_i$. Specifically, we fulfill the condition $\sum_j \lambda(E_{i,j}^k) \leq \mu^O(A_k) + \frac{\varepsilon}{2^k}$ for some $\varepsilon > 0$.
 
 Then,
 
-$$\sum_{k=1}^\infty \sum_{j=1}^\infty \lambda(E_{i,j}^k) \leq \sum_{k=1}^\infty \mu^0(A_k) + \frac{\epsilon}{2^k} = \sum_{k=1}^\infty \mu^0(A_k) + \varepsilon$$
+$$\sum_{k=1}^\infty \sum_{j=1}^\infty \lambda(E_{i,j}^k) \leq \sum_{k=1}^\infty \mu^O(A_k) + \frac{\epsilon}{2^k} = \sum_{k=1}^\infty \mu^O(A_k) + \varepsilon$$
 
-As $\mu^0(\cup A_i)$ is the infimum of a set that contains $\sum_{k=1}^\infty \sum_{j=1}^\infty \lambda(E_{i,j}^k)$, then 
+As $\mu^O(\cup A_i)$ is the infimum of a set that contains $\sum_{k=1}^\infty \sum_{j=1}^\infty \lambda(E_{i,j}^k)$, then 
 
-$$\mu^0(\cup A_i) \leq \sum_{k=1}^\infty \sum_{j=1}^\infty \lambda(E_{i,j}^k) \leq  \sum_{k=1}^\infty \mu^0(A_k) + \varepsilon$$
+$$\mu^O(\cup A_i) \leq \sum_{k=1}^\infty \sum_{j=1}^\infty \lambda(E_{i,j}^k) \leq  \sum_{k=1}^\infty \mu^O(A_k) + \varepsilon$$
 
 As $\varepsilon > 0$ is arbitrary, then we have:
 
-$$\mu^0(\cup A_i) \leq \sum_{k=1}^\infty \mu^0(A_k)$$
+$$\mu^O(\cup A_i) \leq \sum_{k=1}^\infty \mu^O(A_k)$$
 
 satisfying subadditivity. **QED**
 
 It is important to note that we are covering each $A_k$ with a covering that is larger than $A_k$ by $\frac{\varepsilon}{2^k}$. So as $k$ increases, the covering of $A_k$ gets arbitrarily closer to $A_k$ in outer measure. It is a relatively useful technique in measure theoretic proofs.
 
-Again, the outer measure $\mu^0$ is not defined on sets to a restricted to a $\sigma$-algebra. In fact, it is not even a measure since it is defined on all subsets of $\mathbf{R}^n$. Clearly, we run into the issue of mutual consistency as seen before. We must restrict the definition to sets of $2^{\mathbf{R}^n}$ that are $\mu^0$-measurable. 
+Again, the outer measure $\mu^O$ is not defined on sets to a restricted to a $\sigma$-algebra. In fact, it is not even a measure since it is defined on all subsets of $\mathbf{R}^n$. Clearly, we run into the issue of mutual consistency as seen before. We must restrict the definition to sets of $2^{\mathbf{R}^n}$ that are $\mu^O$-measurable. 
 
-**Definition**: A set $A$ is $\mu^0$-measurable if 
+**Definition**: A set $A$ is $\mu^O$-measurable if 
 
-$$\mu^0(E) = \mu^0(E\cap A) + \mu^0(E\cap A^C);\; \forall E \in 2^\Omega$$
+$$\mu^O(E) = \mu^O(E\cap A) + \mu^O(E\cap A^C);\; \forall E \in 2^\Omega$$
 
 Note that the outer measure did not require additivity on disjoint sets. This definition provides that restriction. This definition can be interpreted with the following logic:
 
-1. $\mu^0(E) \leq \mu^0(E\cap A) + \mu^0(E\cap A^C)$ by subadditivity
-2. If we also can show the above is true when $\leq$ is changed to $\geq$, then we have equivalence. (for $E$ where $\mu^0(E) < \infty$)
+1. $\mu^O(E) \leq \mu^O(E\cap A) + \mu^O(E\cap A^C)$ by subadditivity
+2. If we also can show the above is true when $\leq$ is changed to $\geq$, then we have equivalence. (for $E$ where $\mu^O(E) < \infty$)
 
-That is, the idea of the "lower" outer measure and "upper" outer measure need to agree to be $\mu^0$-measurable.
+That is, the idea of the "lower" outer measure and "upper" outer measure need to agree to be $\mu^O$-measurable.
 
-So if set $A$ does not satisfy this property, it is not $\mu^0$ measurable. Why did we bother with $\sigma$-algebras and complete measures if we could reduce measurability down to this definition? It turns out that $\mu^0$-measurable sets form a $\sigma$-algebra as well, and is a complete measure.
+So if set $A$ does not satisfy this property, it is not $\mu^O$ measurable. Why did we bother with $\sigma$-algebras and complete measures if we could reduce measurability down to this definition? It turns out that $\mu^O$-measurable sets form a $\sigma$-algebra as well, and is a complete measure.
 
 ### Caratheodory's Theorem
 
 This is the statement of the theorem:
 
-**Theorem** (Caratheodory) Let $\mu^0$ be an outer measure on $\Omega$. Then $\mathcal{A}^0 := \{\mu^0 \text{-measurable sets}\}$ forms a $\sigma$-algebra. Also, $\mu^0$ defined on sets in $\mathcal{A}^0$ is a complete measure.
+**Theorem** (Caratheodory) Let $\mu^O$ be an outer measure on $\Omega$. Then $\mathcal{A}^O := \{\mu^O \text{-measurable sets}\}$ forms a $\sigma$-algebra. Also, $\mu^O$ defined on sets in $\mathcal{A}^O$ is a complete measure.
 
-The significance of this theorem is that it allows us to define a measure that is valid on a simpler algebraic structure, in this case, the set of elements that satisfy the definition of $\mu^0$-measurable. Then invoking this theorem allows us to define an agreeing *complete* measure on this simpler structure, that generalizes to a $\sigma$-algebra. That is, if we can define a measure, we can extend the measure to be complete. 
+The significance of this theorem is that it allows us to define a measure that is valid on a simpler algebraic structure, in this case, the set of elements that satisfy the definition of $\mu^O$-measurable. Then invoking this theorem allows us to define an agreeing *complete* measure on this simpler structure, that generalizes to a $\sigma$-algebra. That is, if we can define a measure, we can extend the measure to be complete. 
 
 A variant of this theorem exists in probability theory, allowing us to define a probability measure on an algebra $A$, which extends to another probability measure on $\sigma$-algebra $\mathcal{F}-sets$, that agrees with the measure on $A$-sets.
 
-While we can try to use the definition of an outer measure and its $\mu^0$-measurable sets to demonstrate the properties of a $\sigma$-algebra, we can also do so more conveniently with the monotone class theorem or an intermediary step of Dynkin's $\pi-\lambda$ theorem.
+While we can try to use the definition of an outer measure and its $\mu^O$-measurable sets to demonstrate the properties of a $\sigma$-algebra, we can also do so more conveniently with the monotone class theorem or an intermediary step of Dynkin's $\pi-\lambda$ theorem.
 
-*Proof of Caratheodory*: First, $A, A^C$ are $\mu^0$ measurable is trivial by the definition. So if $A \in \mathcal{M}^0$ then so is $A^C$. $\varnothing \in \mathcal{M}^0$ is free too. 
+*Proof of Caratheodory*: First, $A, A^C$ are $\mu^O$ measurable is trivial by the definition. So if $A \in \mathcal{M}^O$ then so is $A^C$. $\varnothing \in \mathcal{M}^O$ is free too. 
 
 This satisfies the $\lambda$-system requirement and allows us to demonstrate closure under finite unions for the $\pi$-system requirement of finite intersections.
 
 
-Now we demonstrate that $\mathcal{M}^0$ is closed under finite unions. That is, if $A, B \in \mathcal{M}^0$ then $A \cup B \in \mathcal{M}^0$. Indeed:
+Now we demonstrate that $\mathcal{M}^O$ is closed under finite unions. That is, if $A, B \in \mathcal{M}^O$ then $A \cup B \in \mathcal{M}^O$. Indeed:
 
-$$\mu^0(E) = \mu^0(E \cap A) + \mu^0(E \cap A^C)$$
-$$= \mu^0(E \cap A \cap B) + \mu^0(E \cap A \cap B^C) + \mu^0(E \cap A^C \cap B) + \mu^0(E \cap A^C \cap B^C)$$
+$$\mu^O(E) = \mu^O(E \cap A) + \mu^O(E \cap A^C)$$
+$$= \mu^O(E \cap A \cap B) + \mu^O(E \cap A \cap B^C) + \mu^O(E \cap A^C \cap B) + \mu^O(E \cap A^C \cap B^C)$$
 
-$$\leq \mu^0(E \cap (A \cup B)) + \mu^0(E \cap (A \cup B)^C)$$
+$$\leq \mu^O(E \cap (A \cup B)) + \mu^O(E \cap (A \cup B)^C)$$
 
-Combining this with subadditivity, we have that $A \cup B$ satisfies the definition of being $\mu^0$ measurable. As finite unions and complementation closed in $\mathcal{M}^0$, we have that it forms an algebra, and also is a $\pi$-system. (Note it is more than a $\pi$-system too since it is closed under complements.)
+Combining this with subadditivity, we have that $A \cup B$ satisfies the definition of being $\mu^O$ measurable. As finite unions and complementation closed in $\mathcal{M}^O$, we have that it forms an algebra, and also is a $\pi$-system. (Note it is more than a $\pi$-system too since it is closed under complements.)
 
-The last step to show $\mathcal{M}^0$ is a $\sigma$-algebra is to show closure under disjoint countable unions. Let $A_1,...$ be a sequence of disjoint sets which are in $\mathcal{M}^0$.
+The last step to show $\mathcal{M}^O$ is a $\sigma$-algebra is to show closure under disjoint countable unions. Let $A_1,...$ be a sequence of disjoint sets which are in $\mathcal{M}^O$.
 
-As $\mathcal{M}^0$ is an algebra, then:
+As $\mathcal{M}^O$ is an algebra, then:
 
-$$\mu^0(E) = \mu^0(E \cap (\sqcup^n_i A_i)) + \mu^0(E \cap (\sqcup^n_i A_i)^C)$$
+$$\mu^O(E) = \mu^O(E \cap (\sqcup^n_i A_i)) + \mu^O(E \cap (\sqcup^n_i A_i)^C)$$
 
 Note that $E\cap (\sqcup_i^n A_i) \supseteq E \cap (\sqcup_i^\infty A_i)$, so we can rewrite the above with and inequality:
 
-$$\mu^0(E) \geq \mu^0(E \cap (\sqcup^n_i A_i)) + \mu^0(E \cap (\sqcup^n_i A_i)^C)$$
+$$\mu^O(E) \geq \mu^O(E \cap (\sqcup^n_i A_i)) + \mu^O(E \cap (\sqcup^n_i A_i)^C)$$
 
 To proceed to the next step, show that:
 
-**Exercise**: Show $\mu^0(E \cap (\sqcup_{i=1}^n A_i)) = \sum_{i=1}^n \mu^0(E \cap A_i)$. *Hint: Do this by induction. The key is that $\mu^0(E \cap (\sqcap_{i=1}^n A_i)) = \mu^0(E \cap A_n) + \mu^0(E \cap (\sqcup_{i=1}^{n-1}A_i))$.*
+**Exercise**: Show $\mu^O(E \cap (\sqcup_{i=1}^n A_i)) = \sum_{i=1}^n \mu^O(E \cap A_i)$. *Hint: Do this by induction. The key is that $\mu^O(E \cap (\sqcap_{i=1}^n A_i)) = \mu^O(E \cap A_n) + \mu^O(E \cap (\sqcup_{i=1}^{n-1}A_i))$.*
 
 Sending $n\to\infty$:
 
-$$\mu^0(E) \geq \sum_{i=1}^\infty \mu^0(E \cap A_i) + \mu^0(E \cap (\sqcup^n_i A_i)^C)$$
+$$\mu^O(E) \geq \sum_{i=1}^\infty \mu^O(E \cap A_i) + \mu^O(E \cap (\sqcup^n_i A_i)^C)$$
 
 and by subadditivity of the first term on the RHS,
 
-$$\mu^0(E) \geq \mu^0(E \cap (\sqcup_{i=1}^\infty A_i)) + \mu^0(E \cap (\sqcup_{i=1}^\infty A_i)^C)$$
+$$\mu^O(E) \geq \mu^O(E \cap (\sqcup_{i=1}^\infty A_i)) + \mu^O(E \cap (\sqcup_{i=1}^\infty A_i)^C)$$
 
-So countable disjoint unions are closed in $\mathcal{M}^0$ making it a $\lambda$-system as well. As $\mathcal{M}^0$ is a $\pi$-system and a $\lambda$-system, it is a $\sigma$-algebra.
+So countable disjoint unions are closed in $\mathcal{M}^O$ making it a $\lambda$-system as well. As $\mathcal{M}^O$ is a $\pi$-system and a $\lambda$-system, it is a $\sigma$-algebra.
 
-$\mu^0$ is a measure on $\mathcal{M}^0$ since it is is closed under disjoint unions as well. That is:
+$\mu^O$ is a measure on $\mathcal{M}^O$ since it is is closed under disjoint unions as well. That is:
 
-$$\mu^0(\sqcup^n_i A_i) \geq \sum_{i=1}^\infty \mu^0(\sqcup^n_i A_i \cap A_i) + \mu^0(\sqcup^n_i A_i \cap (\sqcup^n_i A_i)^C)$$
+$$\mu^O(\sqcup^n_i A_i) \geq \sum_{i=1}^\infty \mu^O(\sqcup^n_i A_i \cap A_i) + \mu^O(\sqcup^n_i A_i \cap (\sqcup^n_i A_i)^C)$$
 
-$$\mu^0(\sqcup^n_i A_i) \geq \sum_{i=1}^\infty \mu^0(A_i)$$
+$$\mu^O(\sqcup^n_i A_i) \geq \sum_{i=1}^\infty \mu^O(A_i)$$
 
-And combining this with subadditivity, we have equality. Thus $\mu^0$ is a measure. 
+And combining this with subadditivity, we have equality. Thus $\mu^O$ is a measure. 
 
-It is also a complete measure. For $A \subset N$ such that $\mu^0(N) = 0$:
+It is also a complete measure. For $A \subset N$ such that $\mu^O(N) = 0$:
 
-$$\mu*(E) \geq \mu^0(E \cap A) + \mu^0(E \cap A^C)$$
+$$\mu*(E) \geq \mu^O(E \cap A) + \mu^O(E \cap A^C)$$
 
-**Exercise**: Prove the above statement. *Hint: $E \cap A \subseteq A$ and $E \cap A^C \subseteq E$. Then argue by subadditivity to show that null sets are in $\mathcal{M}^0$.
+**Exercise**: Prove the above statement. *Hint: $E \cap A \subseteq A$ and $E \cap A^C \subseteq E$. Then argue by subadditivity to show that null sets are in $\mathcal{M}^O$.
 
-Thus we shown that $\mathcal{M}^0$ is a $\sigma$-algebra, and the outer measure $\mu^0$ defined on sets of $\mathcal{M}^0$ is a complete measure. **QED**
+Thus we shown that $\mathcal{M}^O$ is a $\sigma$-algebra, and the outer measure $\mu^O$ defined on sets of $\mathcal{M}^O$ is a complete measure. **QED**
 
 ## Premeasures and Application of Caratheordory
 
@@ -253,37 +253,37 @@ Caratheodory's theorem provides a good way for use to contruct a measure on a si
 1. $\mu_0(\varnothing) = 0$
 2. $\mu_0(\sqcup_{i=1}^\infty A_i) = \sum_{i>0}\mu_0(A_i)$
 
-We say that a premeasure $\mu_0$ defined on algebra $\mathcal{A}$ *induces* an outer measure $\mu^0$ if:
+We say that a premeasure $\mu_0$ defined on algebra $\mathcal{A}$ *induces* an outer measure $\mu^O$ if:
 
-$$\mu^0(A) := \inf\left\{\sum_i \mu_0(E_i) : A \subseteq \cup_i E_i;\; E_i \in \mathcal{A}\right\}$$
+$$\mu^O(A) := \inf\left\{\sum_i \mu_0(E_i) : A \subseteq \cup_i E_i;\; E_i \in \mathcal{A}\right\}$$
 
 We can provide a property of premeasures that leverages Caratheodory and demonstrates the usefulness of defining a premeasure.
 
-**Theorem**: On a space $\Omega$, if we have an algebra $\mathcal{A}$ equipped with a premeasure $\mu_0$, its induced outer measure $m^0$ is agrees on $\mathcal{A}$-sets, and $\mathcal{A}$ is $m^0$-measurable.
+**Theorem**: On a space $\Omega$, if we have an algebra $\mathcal{A}$ equipped with a premeasure $\mu_0$, its induced outer measure $m^O$ is agrees on $\mathcal{A}$-sets, and $\mathcal{A}$ is $m^O$-measurable.
 
-*Proof*: First, suppose $A \subseteq \cup E_i$. Then define $B_i$ as $A \cap E_i\setminus \cup^{i-1}_j E_j $. Therefore, we know that at least $B_i \subseteq E_i$ and is in $\mathcal{A}$, so $\sum m_0(B_i) \leq \sum m_0(E_i)$. Thus $m_0(A) \leq m^0(A)$. ($\sum m_0(E_i)$ is any element of the outer measure set).
+*Proof*: First, suppose $A \subseteq \cup E_i$. Then define $B_i$ as $A \cap E_i\setminus \cup^{i-1}_j E_j $. Therefore, we know that at least $B_i \subseteq E_i$ and is in $\mathcal{A}$, so $\sum m_0(B_i) \leq \sum m_0(E_i)$. Thus $m_0(A) \leq m^O(A)$. ($\sum m_0(E_i)$ is any element of the outer measure set).
 
-Also $A \subseteq \cup B_i $, so $\sum m_0(B_i)$ is in the set $\{\sum_i \mu_0(E_i) : A \subseteq \cup_i E_i;\; E_i \in \mathcal{A}\}$, thus $m^0(A) \leq m_0(A)$. Therefore, $m^0(A) = m_0(A)$ for $A \in \mathcal{A}$, that is, measures agree.
+Also $A \subseteq \cup B_i $, so $\sum m_0(B_i)$ is in the set $\{\sum_i \mu_0(E_i) : A \subseteq \cup_i E_i;\; E_i \in \mathcal{A}\}$, thus $m^O(A) \leq m_0(A)$. Therefore, $m^O(A) = m_0(A)$ for $A \in \mathcal{A}$, that is, measures agree.
 
-Now we can just show that $A \in \mathcal{A}$-sets are $m^0$-measurable. To do so, we just need to show:
+Now we can just show that $A \in \mathcal{A}$-sets are $m^O$-measurable. To do so, we just need to show:
 
-$$m^0(E) \geq m^0(E \cap A) + m^0(E \cap A^C);\; \forall A \in \mathcal{A},\, \forall E \in 2^\Omega$$
+$$m^O(E) \geq m^O(E \cap A) + m^O(E \cap A^C);\; \forall A \in \mathcal{A},\, \forall E \in 2^\Omega$$
 
-Indeed, there exists some $E\subseteq \sqcup_i B_i$ with $B_i \in \mathcal{A}$ such that $m^0(E) + \varepsilon \geq \sum m_0(B_j)$. This is by definition of the outer measure. Now $A_j$ are all $m^0$ measurable and $m_0$ agrees with such measure on that domain, so:
+Indeed, there exists some $E\subseteq \sqcup_i B_i$ with $B_i \in \mathcal{A}$ such that $m^O(E) + \varepsilon \geq \sum m_0(B_j)$. This is by definition of the outer measure. Now $A_j$ are all $m^O$ measurable and $m_0$ agrees with such measure on that domain, so:
 
-$$m^0(E) + \varepsilon \geq \sum m^0(B_j) = \sum m^0(B_j \cap A) + m^0(B_j \cap A^C)$$
+$$m^O(E) + \varepsilon \geq \sum m^O(B_j) = \sum m^O(B_j \cap A) + m^O(B_j \cap A^C)$$
 
-which actually holds for any $B \subset 2^\Omega$. Then since $m^0(E) \leq m^0(\sqcup B_i) \leq \sum m^0(B_i)$, by sub-additivity of $m^0$,
+which actually holds for any $B \subset 2^\Omega$. Then since $m^O(E) \leq m^O(\sqcup B_i) \leq \sum m^O(B_i)$, by sub-additivity of $m^O$,
 
-$$\sum m^0(B_j \cap E) + m^0(B_j \cap A^C) \geq m^0(E \cap A) + m^0(E \cap A^C)$$
+$$\sum m^O(B_j \cap E) + m^O(B_j \cap A^C) \geq m^O(E \cap A) + m^O(E \cap A^C)$$
 
-Therefore $m^0(E) = m*(E \cap A) + m^0(E \cap A^C)$, so $A$ is $m^0$-measurable, for any $A \in \mathcal{A}$. **QED**
+Therefore $m^O(E) = m*(E \cap A) + m^O(E \cap A^C)$, so $A$ is $m^O$-measurable, for any $A \in \mathcal{A}$. **QED**
 
 This theorem tells us that the outer measure, induced by the premeasure on an algebra, is defined on a $\sigma$-algebra, namely the set of all outer-measurable sets. Furthermore, this outer measure is an extension of the pre-measure, and all sets in the algebra is also outer-measurable.
 
 This next theorem is commonly accepted as the most powerful application of Caratheodory's Theorem. It is what gives it the name, *Caratheodory's extension thoerem* used in probability theory - in particular, to prove Fubini's theorem on joint probability spaces. 
 
-**Theorem**: Let $m_0$ be a premeasure defined on algebra $A$ and $\mathcal{F} := \sigma(A)$. Then there exists a measure $\mu$ on $\mathcal{F}$, such that $\mu = m^0\|_{\mathcal{F}}$ and $m\|_{A} = m_0$. Furthermore, if $\nu$ is another measure defined on $\mathcal{F}$ that extends from $m_0$, then $\nu(E) \leq \mu(E)$ for all $\mathcal{F}$-measurable sets, with equality when $\mu(E)$ is finite.
+**Theorem**: Let $m_0$ be a premeasure defined on algebra $A$ and $\mathcal{F} := \sigma(A)$. Then there exists a measure $\mu$ on $\mathcal{F}$, such that $\mu = m^O\|_{\mathcal{F}}$ and $m\|_{A} = m_0$. Furthermore, if $\nu$ is another measure defined on $\mathcal{F}$ that extends from $m_0$, then $\nu(E) \leq \mu(E)$ for all $\mathcal{F}$-measurable sets, with equality when $\mu(E)$ is finite.
 
 *Proof*: The existence of such a measure with said conditions is a consequence of the theorem above. Now onto uniqueness and $\nu$.
 

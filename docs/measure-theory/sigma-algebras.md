@@ -172,6 +172,8 @@ Sometimes, we do not wish to work with set logics that are as demanding as an al
 
 That is, every $\sigma$-algebra must be a $\lambda$-system, since $\sigma$-algebras require closure under disjoint unions as well. But the reverse need not be true. Counter examples are easy.
 
+**Exercise**: Provide a counter example of a $\lambda$-system that is not a $\sigma$-algebra.
+
 **Lemma**: Every $\pi$-system that is also a $\lambda$-system forms a $\sigma$-algebra.
 
 *Proof*: Let $X$ be a $\pi$ and $\lambda$-system. $\varnothing$ and complementation is free since it is in the $\lambda$-system. Consider any set $A_1,...,A_n \in X$. Let $B_1 = A_1, B_2 = A_2 \setminus A_1$, and in general $B_k = A_k \setminus \cup_{j=1}^{k-1}A_{j}$. 
