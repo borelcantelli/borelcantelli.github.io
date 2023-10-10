@@ -16,7 +16,7 @@ has_toc: true
 {:toc}
 
 
-# General Measure Functions
+# Measures
 
 ## TLDR
 
@@ -123,6 +123,169 @@ $$\mu(E_2) \leq \mu(E_2 \cup F_2) = \mu(E_1 \cup F_1) \leq \mu(E_1 \cup N) =\mu(
 
 As $\mu(E_1) = \mu(E_2) \iff \bar{\mu}(E_1 \cup F_1) = \bar{\mu}(E_2 \cup F_2)$, then it must be that $\bar{\mu}$ agrees on equivalent sets, hence unique. Furthermore, $\bar{\mu}$ is a complete measure of $\bar{\mathcal{M}}$ since $\bar{\mathcal{M}}$ contains all subsets of null sets by contruction on which $\bar{\mu}$ is defined.
 
+# Outer Measure
+
+In integration, we require that the upper Riemann sum and the lower Riemann sum converge to be integrable. That is, as partitions get finer, the upper sum descends down to the true area, while the lower sum ascends to the true area. The **outer measure** is inspired by the upper sum. 
+
+The **outer measure** $\mu^*$ is any measure function that satisfies:
+
+1. $\mu^*(\varnothing) = 0$
+2. Monotonicity: $\mu^*(A) \leq \mu^*(B)$ if $A \subseteq B$
+3. Subadditivity: $\mu^*(\cup_i A_i) \leq \sum_i \mu^*(A_i)$
+
+A particular outer measure is the **Lebesgue outer measure** defined on the space $\Omega$. It is defined as:
+
+$$\mu^*(A) = \inf\left\{ \sum_{i=1}^\infty \lambda(E_i) : A \subseteq \bigcup_{i=1}^\infty E_i;\; \forall E_i \in \mathcal{E}\right \}$$
+
+Here $\lambda$ is the Lebesgue measure. For now we define this as $\lambda: \mathcal{E} \to [0, \infty]$ for $\mathcal{E} \subseteq 2^\Omega$. $\lambda(\varnothing) = 0$. From the definition, there is nothing from stopping us to restrict $A$ to any $\sigma$-algebra. In fact, $A$ can be anything in $2^\Omega$. 
+
+Intuitively, this is the "smallest" measure of all measurements made on coverings of $A$, the set of interest.
+
+**Exercise**: Prove that $\mu^*$ satisfies monotonicity
+
+For subadditivity:
+
+*Proof*: Given a countable collection of $A_1,...$, define a covering made by $E_i^j$. Specifcally, we cover each $A_i$ with a set of $\{E_{i,j}^k\}_{j>0}$ such that the covering is slightly larger than $A_i$. Specifically, we fulfill the condition $\sum_j \lambda(E_{i,j}^k) \leq \mu^*(A_k) + \frac{\varepsilon}{2^k}$ for some $\varepsilon > 0$.
+
+Then,
+
+$$\sum_{k=1}^\infty \sum_{j=1}^\infty \lambda(E_{i,j}^k) \leq \sum_{k=1}^\infty \mu^*(A_k) + \frac{\epsilon}{2^k} = \sum_{k=1}^\infty \mu^*(A_k) + \varepsilon$$
+
+As $\mu^*(\cup A_i)$ is the infimum of a set that contains $\sum_{k=1}^\infty \sum_{j=1}^\infty \lambda(E_{i,j}^k)$, then 
+
+$$\mu^*(\cup A_i) \leq \sum_{k=1}^\infty \sum_{j=1}^\infty \lambda(E_{i,j}^k) \leq  \sum_{k=1}^\infty \mu^*(A_k) + \varepsilon$$
+
+As $\varepsilon > 0$ is arbitrary, then we have:
+
+$$\mu^*(\cup A_i) \leq \sum_{k=1}^\infty \mu^*(A_k)$$
+
+satisfying subadditivity. **QED**
+
+It is important to note that we are covering each $A_k$ with a covering that is larger than $A_k$ by $\frac{\varepsilon}{2^k}$. So as $k$ increases, the covering of $A_k$ gets arbitrarily closer to $A_k$ in outer measure. It is a relatively useful technique in measure theoretic proofs.
+
+Again, the outer measure $\mu^*$ is not defined on sets to a restricted to a $\sigma$-algebra. In fact, it is not even a measure since it is defined on all subsets of $\mathbf{R}^n$. Clearly, we run into the issue of mutual consistency as seen before. We must restrict the definition to sets of $2^{\mathbf{R}^n}$ that are $\mu^*$-measurable. 
+
+**Definition**: A set $A$ is $\mu^*$-measurable if 
+
+$$\mu^*(E) = \mu^*(E\cap A) + \mu^*(E\cap A^C);\; \forall E \in 2^\Omega$$
+
+Note that the outer measure did not require additivity on disjoint sets. This definition provides that restriction. This definition can be interpreted with the following logic:
+
+1. $\mu^*(E) \leq \mu^*(E\cap A) + \mu^*(E\cap A^C)$ by subadditivity
+2. If we also can show the above is true when $\leq$ is changed to $\geq$, then we have equivalence. (for $E$ where $\mu^*(E) < \infty$)
+
+That is, the idea of the "lower" outer measure and "upper" outer measure need to agree to be $\mu^*$-measurable.
+
+So if set $A$ does not satisfy this property, it is not $\mu^*$ measurable. Why did we bother with $\sigma$-algebras and complete measures if we could reduce measurability down to this definition? It turns out that $\mu^*$-measurable sets form a $\sigma$-algebra as well, and is a complete measure.
+
+### Caratheodory's Theorem
+
+This is the statement of the theorem:
+
+**Theorem** (Caratheodory) Let $\mu^*$ be an outer measure on $\Omega$. Then $\mathcal{A}^* := \{\mu^* \text{-measurable sets}\}$ forms a $\sigma$-algebra. Also, $\mu^*$ defined on sets in $\mathcal{A}^*$ is a complete measure.
+
+The significance of this theorem is that it allows us to define a measure that is valid on a simpler algebraic structure, in this case, the set of elements that satisfy the definition of $\mu^*$-measurable. Then invoking this theorem allows us to define an agreeing *complete* measure on this simpler structure, that generalizes to a $\sigma$-algebra. That is, if we can define a measure, we can extend the measure to be complete. 
+
+A variant of this theorem exists in probability theory, allowing us to define a probability measure on an algebra $A$, which extends to another probability measure on $\sigma$-algebra $\mathcal{F}-sets$, that agrees with the measure on $A$-sets.
+
+While we can try to use the definition of an outer measure and its $\mu^*$-measurable sets to demonstrate the properties of a $\sigma$-algebra, we can also do so more conveniently with the monotone class theorem or an intermediary step of Dynkin's $\pi-\lambda$ theorem.
+
+*Proof of Caratheodory*: First, $A, A^C$ are $\mu^*$ measurable is trivial by the definition. So if $A \in \mathcal{M}^*$ then so is $A^C$. $\varnothing \in \mathcal{M}^*$ is free too. 
+
+This satisfies the $\lambda$-system requirement and allows us to demonstrate closure under finite unions for the $\pi$-system requirement of finite intersections.
+
+
+Now we demonstrate that $\mathcal{M}^*$ is closed under finite unions. That is, if $A, B \in \mathcal{M}^*$ then $A \cup B \in \mathcal{M}^*$. Indeed:
+
+$$\mu^*(E) = \mu^*(E \cap A) + \mu^*(E \cap A^C)$$
+$$= \mu^*(E \cap A \cap B) + \mu^*(E \cap A \cap B^C) + \mu^*(E \cap A^C \cap B) + \mu^*(E \cap A^C \cap B^C)$$
+
+$$\leq \mu^*(E \cap (A \cup B)) + \mu^*(E \cap (A \cup B)^C)$$
+
+Combining this with subadditivity, we have that $A \cup B$ satisfies the definition of being $\mu^*$ measurable. As finite unions and complementation closed in $\mathcal{M}^*$, we have that it forms an algebra, and also is a $\pi$-system. (Note it is more than a $\pi$-system too since it is closed under complements.)
+
+The last step to show $\mathcal{M}^*$ is a $\sigma$-algebra is to show closure under disjoint countable unions. Let $A_1,...$ be a sequence of disjoint sets which are in $\mathcal{M}^*$.
+
+As $\mathcal{M}^*$ is an algebra, then:
+
+$$\mu^*(E) = \mu^*(E \cap (\sqcup^n_i A_i)) + \mu^*(E \cap (\sqcup^n_i A_i)^C)$$
+
+Note that $E\cap (\sqcup_i^n A_i) \supseteq E \cap (\sqcup_i^\infty A_i)$, so we can rewrite the above with and inequality:
+
+$$\mu^*(E) \geq \mu^*(E \cap (\sqcup^n_i A_i)) + \mu^*(E \cap (\sqcup^n_i A_i)^C)$$
+
+To proceed to the next step, show that:
+
+**Exercise**: Show $\mu^*(E \cap (\sqcup_{i=1}^n A_i)) = \sum_{i=1}^n \mu^*(E \cap A_i)$. *Hint: Do this by induction. The key is that $\mu^*(E \cap (\sqcap_{i=1}^n A_i)) = \mu^*(E \cap A_n) + \mu^*(E \cap (\sqcup_{i=1}^{n-1}A_i))$.*
+
+Sending $n\to\infty$:
+
+$$\mu^*(E) \geq \sum_{i=1}^\infty \mu^*(E \cap A_i) + \mu^*(E \cap (\sqcup^n_i A_i)^C)$$
+
+and by subadditivity of the first term on the RHS,
+
+$$\mu^*(E) \geq \mu^*(E \cap (\sqcup_{i=1}^\infty A_i)) + \mu^*(E \cap (\sqcup_{i=1}^\infty A_i)^C)$$
+
+So countable disjoint unions are closed in $\mathcal{M}^*$ making it a $\lambda$-system as well. As $\mathcal{M}^*$ is a $\pi$-system and a $\lambda$-system, it is a $\sigma$-algebra.
+
+$\mu^*$ is a measure on $\mathcal{M}^*$ since it is is closed under disjoint unions as well. That is:
+
+$$\mu^*(\sqcup^n_i A_i) \geq \sum_{i=1}^\infty \mu^*(\sqcup^n_i A_i \cap A_i) + \mu^*(\sqcup^n_i A_i \cap (\sqcup^n_i A_i)^C)$$
+
+$$\mu^*(\sqcup^n_i A_i) \geq \sum_{i=1}^\infty \mu^*(A_i)$$
+
+And combining this with subadditivity, we have equality. Thus $\mu^*$ is a measure. 
+
+It is also a complete measure. For $A \subset N$ such that $\mu^*(N) = 0$:
+
+$$\mu*(E) \geq \mu^*(E \cap A) + \mu^*(E \cap A^C)$$
+
+**Exercise**: Prove the above statement. *Hint: $E \cap A \subseteq A$ and $E \cap A^C \subseteq E$. Then argue by subadditivity to show that null sets are in $\mathcal{M}^*$.
+
+Thus we shown that $\mathcal{M}^*$ is a $\sigma$-algebra, and the outer measure $\mu^*$ defined on sets of $\mathcal{M}^*$ is a complete measure. **QED**
+
+## Premeasures and Application of Caratheordory
+
+Caratheodory's theorem provides a good way for use to contruct a measure on a simpler set and insist that the same measure can be validly extended to other more complex environments, as discussed before. We introduce the notion of a **premeasure**. 
+
+**Definition**: A **premeasure** is a function $\mu_0: L \to [0, \infty]$ for algebra $\mathcal{A}$. It satisfies the following:
+
+1. $\mu_0(\varnothing) = 0$
+2. $\mu_0(\sqcup_{i=1}^\infty A_i) = \sum_{i>0}\mu_0(A_i)$
+
+We say that a premeasure $\mu_0$ defined on algebra $\mathcal{A}$ *induces* an outer measure $\mu^*$ if:
+
+$$\mu^*(A) := \inf\left\{\sum_i \mu_0(E_i) : A \subseteq \cup_i E_i;\; E_i \in \mathcal{A}\right\}$$
+
+We can provide a property of premeasures that leverages Caratheodory and demonstrates the usefulness of defining a premeasure.
+
+**Theorem**: On a space $\Omega$, if we have an algebra $\mathcal{A}$ equipped with a premeasure $\mu_0$, its induced outer measure $m^*$ is agrees on $\mathcal{A}$-sets, and $\mathcal{A}$ is $m^*$-measurable.
+
+*Proof*: First, suppose $A \subseteq \cup E_i$. Then define $B_i$ as $A \cap E_i\setminus \cup^{i-1}_j E_j $. Therefore, we know that at least $B_i \subseteq E_i$ and is in $\mathcal{A}$, so $\sum m_0(B_i) \leq \sum m_0(E_i)$. Thus $m_0(A) \leq m^*(A)$. ($\sum m_0(E_i)$ is any element of the outer measure set).
+
+Also $A \subseteq \cup B_i $, so $\sum m_0(B_i)$ is in the set $\{\sum_i \mu_0(E_i) : A \subseteq \cup_i E_i;\; E_i \in \mathcal{A}\}$, thus $m^*(A) \leq m_0(A)$. Therefore, $m^*(A) = m_0(A)$ for $A \in \mathcal{A}$, that is, measures agree.
+
+Now we can just show that $A \in \mathcal{A}$-sets are $m^*$-measurable. To do so, we just need to show:
+
+$$m^*(E) \geq m^*(E \cap A) + m^*(E \cap A^C);\; \forall A \in \mathcal{A},\, \forall E \in 2^\Omega$$
+
+Indeed, there exists some $E\subseteq \sqcup_i B_i$ with $B_i \in \mathcal{A}$ such that $m^*(E) + \varepsilon \geq \sum m_0(B_j)$. This is by definition of the outer measure. Now $A_j$ are all $m^*$ measurable and $m_0$ agrees with such measure on that domain, so:
+
+$$m^*(E) + \varepsilon \geq \sum m^*(B_j) = \sum m^*(B_j \cap A) + m^*(B_j \cap A^C)$$
+
+which actually holds for any $B \subset 2^\Omega$. Then since $m^*(E) \leq m^*(\sqcup B_i) \leq \sum m^*(B_i)$, by sub-additivity of $m^*$,
+
+$$\sum m^*(B_j \cap E) + m^*(B_j \cap A^C) \geq m^*(E \cap A) + m^*(E \cap A^C)$$
+
+Therefore $m^*(E) = m*(E \cap A) + m^*(E \cap A^C)$, so $A$ is $m^*$-measurable, for any $A \in \mathcal{A}$. **QED**
+
+This theorem tells us that the outer measure, induced by the premeasure on an algebra, is defined on a $\sigma$-algebra, namely the set of all outer-measurable sets. Furthermore, this outer measure is an extension of the pre-measure, and all sets in the algebra is also outer-measurable.
+
+This next theorem is commonly accepted as the most powerful application of Caratheodory's Theorem. It is what gives it the name, *Caratheodory's extension thoerem* used in probability theory - in particular, to prove Fubini's theorem on joint probability spaces. 
+
+**Theorem**: Let $m_0$ be a premeasure defined on algebra $A$ and $\mathcal{F} := \sigma(A)$. Then there exists a measure $\mu$ on $\mathcal{F}$, such that $m|_{A} = m_0$. Furthermore, if $\nu$ is another measure defined on $\mathcal{F}$ that extends from $m_0$, then $\nu(E) \leq \mu(E)$ for all $\mathcal{F}$-measurable sets, with equality when $\mu(E)$ is finite.
+
+*Proof*: 
 
 
 
