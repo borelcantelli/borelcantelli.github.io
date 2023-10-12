@@ -168,7 +168,7 @@ Sometimes, we do not wish to work with set logics that are as demanding as an al
 
 1. $\varnothing \in \mathcal{L}$
 2. If $A \in \mathcal{L}$ then $A^C \in \mathcal{L}$
-3. If $A_1,A_2,...$ are all disjoint, then $A_\infty \in \mathcal{L}$ too.
+3. If $A_1,A_2,...$ are all disjoint, then $\sqcup A_i \in \mathcal{L}$ too.
 
 That is, every $\sigma$-algebra must be a $\lambda$-system, since $\sigma$-algebras require closure under disjoint unions as well. But the reverse need not be true. Counter examples are easy.
 
