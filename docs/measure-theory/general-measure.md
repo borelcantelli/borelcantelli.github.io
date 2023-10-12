@@ -181,7 +181,7 @@ That is, the idea of the "lower" outer measure and "upper" outer measure need to
 
 So if set $A$ does not satisfy this property, it is not $\mu^O$ measurable. Why did we bother with $\sigma$-algebras and complete measures if we could reduce measurability down to this definition? It turns out that $\mu^O$-measurable sets form a $\sigma$-algebra as well, and is a complete measure.
 
-### Caratheodory's Theorem
+# Caratheodory's Theorem
 
 This is the statement of the theorem:
 
@@ -308,7 +308,7 @@ Since $\varepsilon$ is arbitrary, then $\nu(E) \geq \mu(E)$. Combining with $\nu
 
 So this theorem is proven by first, establishing existence via the previous theorem, and demonstrating uniqueness of measures by showing the measures agree. This mechanism works by using some disjoint covering of $E$ which is possible from the definition of the premeasure and induced outer measure. Then using properties of subadditivity, and an epsilon room argument, we arrive at the conclusion. It allows us to state that a single measure exists from the extension of a premeasure on an algebra. 
 
-## Borel Measures
+# Borel Measures
 
 A measured defined on $\mathcal{B}(\mathbf{R}^n)$ is called a **Borel Measure**. Due to properties of the real numbers, there are a few properties that can be derived from the Borel measures. Namely, if $\mu$ is a finite Borel measure, and we define $\mu((-\infty, x]) := F(x)$, then $F$ is:
 
@@ -317,11 +317,11 @@ A measured defined on $\mathcal{B}(\mathbf{R}^n)$ is called a **Borel Measure**.
 
 **Exercise**: Prove the statements above. Assume $\mu$ is already a valid measure. *Hint: 1) is by monotonicity, and 2) is by continuity from above.*
 
-### Building Borel Measures
+## Building Borel Measures
 
 From the previous statements, it is clear that we define the Borel measure on Borel sets, namely sets of form $(-\infty, x]$ and $(x, \infty)$ as these are complements of each other. To discuss measurability of such sets, we consider how to construct a $\sigma$-algebra from these sets and also how to define a measure on 1) the generating sets $(-\infty, x]$ and $(x, \infty)$  and 2) its null sets to form a complete measure.
 
-#### Create an Algebra on $\mathbf{R}$
+### Create an Algebra on $\mathbf{R}$
 First, we introduce the term *h-interval*. This is any interval of the form $(-\infty \leq x < y < \infty)$:
 
 1. $(x,y]$
@@ -338,7 +338,7 @@ The set of h-intervals and its finite unions form an algebra $\mathcal{H}$, but 
 
 which are all elements in $\mathcal{H}$. **QED**
 
-#### Define a Premeasure on the Algebra
+### Define a Premeasure on the Algebra
 
 Now that we have an algebra, we can define a premeasure on $\mathcal{H}$. Recall $F(x) = \mu((-\infty, x])$. Now we define $\mu_0(\sqcup_i^n (a_i, b_i]) = \sum_{i}^n F(b_i)-F(a_i)$. Clearly $\mu_0$ is a premeasure, as we also have $\mu_0(\varnothing) = \sum_i^n F(a)-F(a) = 0$.
 
@@ -386,7 +386,7 @@ Now, $[a + \delta, b]$ is a compact set in $\mathbf{R}^1$, so there exists a fin
 
 Since $\varepsilon$ is arbitrary, $F(b)-F(a) \leq \sum_i^\infty F(b_i)-F(a_i) = \sum_j^\infty \mu(I_j) = \mu_0(I)$. Thus combining with the previous result, $F(b)-F(a) = \mu_0(I)$. **QED**
 
-
+### Invoke Caratheodory to Extend the Premeasure
 So now we have a premeasure $\mu_0$ defined on an algebra $\mathcal{H}$. It has an induced outer measure $\mu^O$. By Caratheodory, we have $\mu$ defined on $\sigma(\mathcal{H})$ - the Borel $\sigma$-algebra, where $\mu \equiv \mu^*\|_{\sigma(\mathcal{H})}$. We say that $\mu$ extends $\mu_0$. 
 
 The significance of the property above is that the premeasure $\mu_0$ can be created by any increasing right continuous function $F: \mathbf{R} \to \mathbf{R}$. This premeasure can then be extended to a $\sigma$-algebra and is a measure on that $\sigma$-algebra, namely the Borel $\sigma$-algebra. Because of this, we can define any probability measure (distribution function) the same way. Recall in probability, we have $P(X \leq x) = \int_{\omega:X(\omega) \leq x} d\mathbf{P}(\omega)$. Here $\mathbf{P}$ is a probability measure, and we can change its basis to give the equivalent integral $\int_0^x dF(x)$, where $F$ is the CDF of $X$. 
