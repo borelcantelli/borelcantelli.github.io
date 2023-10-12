@@ -25,6 +25,8 @@ has_toc: true
 3. Complete measures deal with null sets, which are sets with measure 0. This gives rise to the term $P$-almost everywhere, which means that proposition $P$ holds for all sets except for the null sets.
 4. Outer measures do not satisfy requirements of measures - by definition, but they induce a measurable space
 5. This induction of a measurable space allows extensions to be made on measures defined on simpler spaces. Most importantly, Caratheodory's extension theorem.
+6. Borel measures are constructed by defining a premeasure on the algebra of half open sets, then invoking Caratheodory to assert that a measure, and a complete measure extends from the premeasure on a $\sigma$-algebra.
+7. The Borel measure when defined by function $F$, that is, $\mu((a,b]) = F(b)-F(a)$, is called the Lebesgue-Stieltjes measure. When $F(x)=x$, this measure is called the Lebesgue measure.
 
 ## Measure Functions and its Types
 
@@ -305,6 +307,91 @@ $$\nu(E) \geq \nu(\sqcup A_i) - \varepsilon \geq \mu(E) - \varepsilon$$
 Since $\varepsilon$ is arbitrary, then $\nu(E) \geq \mu(E)$. Combining with $\nu(E) \leq \mu(E)$, we arrive at $\nu(E) = \mu(E)$ once we require $\mu(E)<\infty$. **QED**
 
 So this theorem is proven by first, establishing existence via the previous theorem, and demonstrating uniqueness of measures by showing the measures agree. This mechanism works by using some disjoint covering of $E$ which is possible from the definition of the premeasure and induced outer measure. Then using properties of subadditivity, and an epsilon room argument, we arrive at the conclusion. It allows us to state that a single measure exists from the extension of a premeasure on an algebra. 
+
+## Borel Measures
+
+A measured defined on $\mathcal{B}(\mathbf{R}^n)$ is called a **Borel Measure**. Due to properties of the real numbers, there are a few properties that can be derived from the Borel measures. Namely, if $\mu$ is a finite Borel measure, and we define $\mu((-\infty, x]) := F(x)$, then $F$ is:
+
+1. Increasing, i.e. $F(x) \leq F(y)$ for $x < y$
+2. Right continuous, i.e. $F(x^+) = F(x)$ for all $x$. 
+
+**Exercise**: Prove the statements above. Assume $\mu$ is already a valid measure. *Hint: 1) is by monotonicity, and 2) is by continuity from above.*
+
+### Building Borel Measures
+
+From the previous statements, it is clear that we define the Borel measure on Borel sets, namely sets of form $(-\infty, x]$ and $(x, \infty)$ as these are complements of each other. To discuss measurability of such sets, we consider how to construct a $\sigma$-algebra from these sets and also how to define a measure on 1) the generating sets $(-\infty, x]$ and $(x, \infty)$  and 2) its null sets to form a complete measure.
+
+#### Create an Algebra on $\mathbf{R}$
+First, we introduce the term *h-interval*. This is any interval of the form $(-\infty \leq x < y < \infty)$:
+
+1. $(x,y]$
+2. $(x, \infty)$
+3. $\varnothing$
+
+The set of h-intervals and its finite unions form an algebra $\mathcal{H}$, but not a $\sigma$-algebra.
+
+*Proof Sketch*: $\varnothing$ is free, and so is closure under finite unions. The complements can be formed by:
+
+1. $(x, y]^C = (y, \infty) \cup (-\infty, x]$
+2. $(x, \infty)^C = (-\infty, x]$
+3. $\varnothing^C = (-\infty, \infty)$
+
+which are all elements in $\mathcal{H}$. **QED**
+
+#### Define a Premeasure on the Algebra
+
+Now that we have an algebra, we can define a premeasure on $\mathcal{H}$. Recall $F(x) = \mu((-\infty, x])$. Now we define $\mu_0(\sqcup_i^n (a_i, b_i]) = \sum_{i}^n F(b_i)-F(a_i)$. Clearly $\mu_0$ is a premeasure, as we also have $\mu_0(\varnothing) = \sum_i^n F(a)-F(a) = 0$.
+
+This premeasure has three important properties:
+
+1. The premeasure is well defined, i.e. any two equivalent sets have the same premeasure.
+2. $F(\infty) = \sup_x F(x)$ and $F(-\infty) = \inf_x F_x$
+3. If $F(x) = x$ then $\mu_0((a, b]) = b - a$
+
+*Proof*: For 1) suppose we have two equivalent sets $\sqcup_i^n (a_i, b_i] = \sqcup_j^m (c_j, d_j]$. Then:
+
+$$\mu_0(\sqcup_i^n (a_i, b_i]) = \sum_i^n \mu_0((a_i, b_i])$$
+
+Take the common refinement of $(a_i, b_i]$ and $(c_j, d_j]$. There are $n\times m$ intervals, i.e. $\sqcup_i^n (a_i, b_i] = \sqcup_j^m (c_j, d_j] = \sqcup_j^m\sqcup_i^n (g_{ij}, h_{ij}]$. By definition of a common refinement:
+
+1. $\sqcup_j^m (g_{ij}, h_{ij}] = (a_i, b_i]$
+2. $\sqcup_i^n (g_{ij}, h_{ij}] = (c_j, d_j]$
+
+Thus we have:
+
+$$\mu_0(\sqcup_i^n (a_i, b_i]) = \sum_i^n \mu_0((a_i, b_i]) = \sum_i^n \mu_0(\sqcup_j^m (g_{ij}, h_{ij})) = \sum_i^n \sum_j^m F(h_{ij})-F(g_{ij})$$
+
+$$\equiv\sum_i^n \sum_j^m F(h_{ij})-F(g_{ij}) = \sum_j^m F(d_j) - F(c_j) = \mu_0(\sqcup_j^m (c_j, d_j])$$
+
+2) is free, by monotonicity of $F$
+
+3) is more involved. We prove only the finite $(a,b]$ case. We wish to find the premeasure on half interval $I := (a,b]$. Suppose there is a partition such that $I = \sqcup_j^\infty I_j$. Then:
+
+$$\mu_0(I) = \mu_0(\sqcup_j^n I_j) + \mu_0(I \setminus \sqcup_{j}^{n} I_j) \geq \mu_0(\sqcup_j^n I_j) = \sum_j^n \mu_0(I_j)$$
+
+Sending the limit $n\to\infty$, we get $\mu_0(I) \geq \sum_j \mu_0(I_j)$. Now it remains to show $\sum_j \mu_0(I_j) \leq \mu_0(I)$. To do so, we construct a compact set that will cover $b$, and approach $a$ from above. Namely, we will build something like so:
+
+$$[a+\delta, b] \subseteq \sqcup_i (a_i,b_i] \subseteq \cup (a, b+\delta_j)$$
+
+Thus we have a largest set that is approaching $(a,b]$ by becoming smaller, and another set that is approaching $(a, b]$ by enlarging. 
+
+We can do so since $F$ is right continuous, so there exists some $\delta$ such that $F(a+\delta) - F(a) < \varepsilon$ for some $\varepsilon > 0$. Thus we can construct the set $[a+\delta, b] \subseteq I$. Furthermore, there is some sequence of $\delta_j$ such that $F(b_j + \delta_j) - F(b_j) < \varepsilon/2^j$. Again, this is possible by the right continuity of $F$.
+
+Now, $[a + \delta, b]$ is a compact set in $\mathbf{R}^1$, so there exists a finite subcover for any open covering of this set by the Heine-Borel theorem. $\cup_i (a_i ,b_i + \delta_i)$ is an open cover, and by HB Theorem, $[a+\delta, b] \subseteq \cup_i^n (a_i, b_i + \delta_i)$. Now:
+
+1. $F(b)-F(a) = F(b)-F(a+\delta)+F(a+\delta)-F(a)$. Telescope the sum
+2. $= F(b)-F(a+\delta) + \varepsilon$. Last two terms reduce to $\varepsilon$ by right continuity
+3. $\leq\sum_i^n F(b_i+\delta_i) - F(a_i) + \varepsilon$. Heine Borel covering measure
+4. $\leq \sum_i^\infty F(b_i)-F(a_i) + 2\varepsilon$. Right continuity on $F(b_i + \delta_i) - F(b_i) < \epsilon/2^i$
+
+Since $\varepsilon$ is arbitrary, $F(b)-F(a) \leq \sum_i^\infty F(b_i)-F(a_i) = \sum_j^\infty \mu(I_j) = \mu_0(I)$. Thus combining with the previous result, $F(b)-F(a) = \mu_0(I)$. **QED**
+
+
+So now we have a premeasure $\mu_0$ defined on an algebra $\mathcal{H}$. It has an induced outer measure $\mu^O$. By Caratheodory, we have $\mu$ defined on $\sigma(\mathcal{H})$ - the Borel $\sigma$-algebra, where $\mu \equiv \mu^*\|_{\sigma(\mathcal{H})}$. We say that $\mu$ extends $\mu_0$. 
+
+The significance of the property above is that the premeasure $\mu_0$ can be created by any increasing right continuous function $F: \mathbf{R} \to \mathbf{R}$. This premeasure can then be extended to a $\sigma$-algebra and is a measure on that $\sigma$-algebra, namely the Borel $\sigma$-algebra. Because of this, we can define any probability measure (distribution function) the same way. Recall in probability, we have $P(X \leq x) = \int_{\omega:X(\omega) \leq x} d\mathbf{P}(\omega)$. Here $\mathbf{P}$ is a probability measure, and we can change its basis to give the equivalent integral $\int_0^x dF(x)$, where $F$ is the CDF of $X$. 
+
+So we have a measure space $(\mathbf{R}, \mathcal{B}, \mu)$ that is induced and extended from the premeasure on the algebra of half open intervals. The last step is to complete the measure, which we already know how - by considering all sets and subsets of sets where the measure is 0. This is denoted as $(\bar{\mathbf{R}}, \bar{\mathcal{B}}, \bar{\mu})$. From here, we let $\mu$ denote the complete measure. Recall that $\mu((a,b]) = F(b)-F(a)$. This as defined on the completed measure space is called the **Lebesgue-Stieltjes** measure associated with $F$. If $F(x) = x$, then this $\mu$ is called the **Lebesgue** measure on the measurable space. 
 
 
 
