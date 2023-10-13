@@ -198,6 +198,6 @@ Now note that $B_\infty = A_\infty$, $A_\infty \in X$. Thus $X$ is closed under 
 
 As every $\sigma$-algebra containing $P$ is also a $\lambda$-system containing $P$, we also have that $L(P) \subseteq \sigma(P)$, therefore, $L(P) = \sigma(P)$. **QED**
 
-This theorem is important when we discuss measures agreeing on $\sigma$-algebras, and we will revisit this later on.
+This theorem is important when we discuss measures agreeing on $\sigma$-algebras, and we will revisit this later on. 
 
 
