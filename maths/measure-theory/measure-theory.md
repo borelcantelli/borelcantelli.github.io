@@ -1,9 +1,9 @@
 ---
 layout: default
 title: Measure Theory
-nav_order: 3
+nav_order: 1
 has_children: true
-permalink: /docs/measure-theory
+permalink: /maths/measure-theory
 ---
 
 # Measure Theory
