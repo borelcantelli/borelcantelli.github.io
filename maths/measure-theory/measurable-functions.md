@@ -24,8 +24,6 @@ has_toc: true
 
 2. Many functions are measurable. Measurability is preserved through various operations, and also $\min, \max$ operations.
 
-3. 
-
 ## Measurable Functions
 
 Now that we have discussed what are measure functions, we move to integration. But the integration function $I(f)$ takes a function $f$ and produces an area under the curve in the Riemann sense. Understanding $\sigma$-algebras and measures helped build the mechanics behind the measurement process, i.e. integrating with respect to a measure. However, the other part the integral is $f$.
