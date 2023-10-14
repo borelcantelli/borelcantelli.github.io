@@ -22,6 +22,10 @@ has_toc: true
 
 1. Measure functions map elements of a set to a number. Measurable functions are a mapping between elements of a $\sigma$-algebra to another, at least.
 
+2. Many functions are measurable. Measurability is preserved through various operations, and also $\min, \max$ operations.
+
+3. 
+
 ## Measurable Functions
 
 Now that we have discussed what are measure functions, we move to integration. But the integration function $I(f)$ takes a function $f$ and produces an area under the curve in the Riemann sense. Understanding $\sigma$-algebras and measures helped build the mechanics behind the measurement process, i.e. integrating with respect to a measure. However, the other part the integral is $f$.
@@ -30,7 +34,7 @@ $f$ should be a **measurable function**. Recall a function is a mapping $f: X \t
 
 **Exercise**: Given $f: X\to Y$, Prove that $\cup_i f^{-1}(Y_i) = f^{-1}(\cup_i Y_i)$, and $\{f^{-1}(Y)\}^C = f^{-1}(Y^C)$. *Hint: Use the set representation of $f^{-1}$.*
 
-Given two measurable spaces $(X,\mathcal{X}), (Y, \mathcal{Y})$, the function $f: X \to Y$ is **measurable** if $f^{-1}(E) \subseteq \mathcal{X}$ for $E \in \mathcal{Y}$. We call this function $f$ to be $\mathcal{X}/\mathcal{Y}$-measurable.
+Given two measurable spaces $(X,\mathcal{X}), (Y, \mathcal{Y})$, the function $f: X \to Y$ is **measurable** if $f^{-1}(E) \subseteq \mathcal{X}$ for $E \in \mathcal{Y}$. We call this function $f$ to be $\mathcal{X}/\mathcal{Y}$-measurable. For example, the constant function $f(x)=c$ is continuous and thus measurable, but also we can construct the trivial $\sigma$-algebra in the image, and any measurable set in the domain and show the mapping, to demonstrate measurability.
 
 **Exercise**: If $f: A \to B$ is $\mathcal{A}/\mathcal{B}$-measurable and $g: B \to C$ is $\mathcal{B}/\mathcal{C}$-measurable, show that $f \circ g$ is $\mathcal{A}/\mathcal{C}$-measurable.
 
