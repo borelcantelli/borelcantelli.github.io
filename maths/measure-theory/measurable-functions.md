@@ -42,9 +42,30 @@ For a given function $f: X \to \mathbf{R}$ that is $\mathcal{X}/\mathcal{B}$-mea
 
 **Exercise**: Prove the above statement. That is, let $\mathcal{B} = \sigma(A)$. If the preimage condition $f^{-1}(A) \in \mathcal{X}$ holds, then for any $B \in \mathcal{B}$, the preimage also holds. *Hint: Prove that that $\{a \in A : f^{-1}(a) \in \mathcal{X}\}$ is a $\sigma$-algebra and it contains $A$, hence contains $\mathcal{B}$.*
 
+Suppose we have a measurable space $(\Omega, \mathcal{M})$ and $f: \mathcal{M} \to \mathbf{R}$ and is measurable. Now consider $E \in \mathcal{M}$. How do you prove that the restriction of $f$ onto $E$ is also measurable?
+
+**Exercise**: Prove the above, that $f\|_E$ is measurable. *Hint: Show that $\{F \cap E: F \in \mathcal{M}\}$ is a $\sigma$-algebra that contains $E$ or show that $f^{-1}(B) \cap E \in \mathcal{M}$ for any Borel set $B$*.
+
+## Induced Sigma Algebras
+
+Up to now, the measurable functions we deal with involve first defining a $\sigma$-algebra for the domain and range of some function $f$. However, we can see that for a function $f$, we can also induce a measurable domain, for which $f$ is measurable. So a function $f : X \to Y$ where the image is a measurable space $(Y, \mathcal{Y})$, can induce a $\sigma$-algebra on the domain:
+
+$$\sigma(\{f^{-1}(Y) \subset 2^X : Y \in \mathcal{Y} \})$$
+
+In shorter notation, we write this as $\sigma(f)$, or the smallest $\sigma$-algebra on the domain $X$, such that $f$ is measurable.
 
 
+There are several properties of measurable functions that are pretty straight forward to prove at this point.
 
+**Exercise**: Show that if $f,g: X-> Y$ are both $\mathcal{X}/\mathcal{Y}$-measurable, then $f+g$ and $fg$ are measurable. *Hint: Use the fact that continuous functions are measurable*.
 
+**Exercise**: Suppose that $f_i : X \to \bar{\mathbf{R}}$ is a sequence of $\mathcal{X}/\mathcal{Y}$-measurable functions. Show that $\sup_i f_i, \inf_i f_i$ are both measurable. Using those, show that $\limsup_i f_i$ and $\liminf_i f_i$ are both measurable. Then show that if $\lim_i f_i$ exists, then it is also measurable. (By measurable, it means $\mathcal{X}/\mathcal{Y}$-measurable.) *Hint: Define the Borel $\sigma$-algebra using a half open interval. Use the preimage definition of measurability and leverage the set operations that work well with preimages. Depending on how the Borel $\sigma$-algebra is generated, think of what $\sup, \inf, \lim$ all mean in terms of set operations.*
 
+**Exercise**: For measurable $f,g$ prove $\max(f,g)$ and $\min(f,g)$ are measurable. *Hint: Construct a Borel $\sigma$-algebra with half intervals. Then consider what it means for $f,g$ when $\max(f,g) < a$. Argue analogously for $\min(f,g)$.*
+
+This previous exercise will demonstrate that decomposition of a function into its negative and positive parts is still measurable. This will become critical for building up integration theory.
+
+Define $f^- = \max(-f(x), 0)$ as the negative part of $f$, and $f^+ = \max(f(x), 0)$ as the positive part of $x$. See that $f = f^+ - f^-$. If $f$ is measurable, then so is $f^-$ and $f^+$, by the previous exercises.
+
+Now, measurable functions have been introduced. So in the integral $\int_A f d\mu$, we have discussed what $\mu$ means (a measure function), and what $A$ means (a measurable set), and we have imposed some restrictions on $f$ (measurability of the function). Now we have enough to learn how what the entire expression $\int_A f d\mu$ means.
 
