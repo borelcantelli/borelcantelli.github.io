@@ -85,7 +85,7 @@ One way would be to pick the highest probability for $o_1$, then for $o_2$ given
 
 1. Select $k$ candidates for position $i$ i.e. $o_i = c_1,..., c_k$
 2. Run the model $j=1,...,k$ times, each time supposing $o_i = c_j$ and generating $\hat{o}_{i+1}$
-3. Check which $(c_j, \hat{o}_{i+1})_{j=1}^k$ yields the lowest error compared to the truth
+3. Check which $(c_j, \hat{o}_{i+1})$ yields the lowest error compared to the truth
 4. Set $o_i := c_j$ for the optimal $j$ that yielded the lowest error in part (3)
 5. Move to $o_{i+1}$, and generate $k$ candidates. Repeat from (1) until exhausted sequence (EOS token)
 
