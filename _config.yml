@@ -99,6 +99,8 @@ mermaid:
 # Enable or disable heading anchors
 heading_anchors: true
 
+github: [metadata]
+
 # Aux links for the upper right navigation
 aux_links:
   "Just the Docs on GitHub":
