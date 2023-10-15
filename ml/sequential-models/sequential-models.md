@@ -5,7 +5,7 @@ parent: Sequential Models
 grand_parent: Basics of Machine Learning
 nav_order: 1
 has_children: true
-permalink: /ml/sequential-models
+permalink: /ml/sequential-models/first-models
 ---
 
 # First Sequential Models
