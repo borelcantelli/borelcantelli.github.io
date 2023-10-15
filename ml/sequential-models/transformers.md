@@ -5,7 +5,7 @@ parent: Sequential Models
 grand_parent: Basics of Machine Learning
 nav_order: 3
 has_children: true
-permalink: /ml/sequential-models/transformers
+permalink: ml/sequential-models/transformers
 ---
 
 # Transformers
