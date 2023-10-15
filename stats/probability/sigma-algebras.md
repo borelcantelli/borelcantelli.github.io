@@ -2,6 +2,7 @@
 layout: default
 title: Measure Theory and Sigma Algebras
 parent: Probability Theory
+grand_parent: Probability
 nav_order: 1
 has_toc: true
 ---

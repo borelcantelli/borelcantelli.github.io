@@ -2,6 +2,7 @@
 layout: default
 title: Expectation and Integration
 parent: Probability Theory
+grand_parent: Probability
 nav_order: 3
 has_toc: true
 ---

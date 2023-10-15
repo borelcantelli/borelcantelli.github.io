@@ -2,6 +2,7 @@
 layout: default
 title: Law of Large Numbers and Central Limit Theorems
 parent: Probability Theory
+grand_parent: Probability
 nav_order: 3
 has_toc: true
 ---

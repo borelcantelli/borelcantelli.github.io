@@ -2,7 +2,7 @@
 layout: default
 title: Stochastic Calculus Basics
 parent: Stochastic Calculus
-grand_parent: All Things Statistics
+grand_parent: Probability
 nav_order: 1
 has_toc: true
 ---

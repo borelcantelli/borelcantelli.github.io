@@ -2,6 +2,7 @@
 layout: default
 title: Ito Process
 parent: Stochastic Calculus
+grand_parent: Probability
 nav_order: 2
 has_toc: true
 ---

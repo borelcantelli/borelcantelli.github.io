@@ -2,6 +2,7 @@
 layout: default
 title: Probability as a Measure
 parent: Probability Theory
+grand_parent: Probability
 nav_order: 2
 has_toc: true
 ---
