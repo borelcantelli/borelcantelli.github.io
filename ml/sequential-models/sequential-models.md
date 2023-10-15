@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Sequential Models
+parent: Sequential Models
 nav_order: 1
 has_children: true
 permalink: /ml/sequential-models
