@@ -7,7 +7,7 @@ has_children: true
 permalink: /ml/sequential-models
 ---
 
-# Sequential Models
+# First Sequential Models
 
 A sequential model is one that can do either:
 
@@ -122,7 +122,3 @@ This allows for the hidden state to be updated by
 That is, the output gate determines how much to update the hidden state using the cell memory. As time step inputs are sequentially passed through, the memory gate cell is updated and the hidden states are updated. The rest of the LSTM will procede in the same way as the RNN.
 
 This architecture alleviates the gradient vanishing problem since it can learn to forget and preturb or leave its states untouched depending on input. As such, we are able to train over longer sequences and learn long range dependencies.
-
-## Attention and Transformers
-
-
