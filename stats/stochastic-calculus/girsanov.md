@@ -5,6 +5,7 @@ parent: Stochastic Calculus
 grand_parent: Probability
 nav_order: 4
 has_toc: false
+permalink: stats/stochastic-calculus/girsanov
 ---
 
 # Ito Process

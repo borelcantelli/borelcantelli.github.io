@@ -5,6 +5,7 @@ parent: Stochastic Calculus
 grand_parent: Probability
 nav_order: 2
 has_toc: true
+permalink: stats/stochastic-calculus/ito-process
 ---
 
 # Ito Process

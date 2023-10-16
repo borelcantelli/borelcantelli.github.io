@@ -5,6 +5,7 @@ parent: Probability Theory
 grand_parent: Probability
 nav_order: 2
 has_toc: true
+permalink: stats/probability/probability-measure
 ---
 
 # Probability as a Measure

@@ -5,6 +5,7 @@ parent: Probability Theory
 grand_parent: Probability
 nav_order: 1
 has_toc: true
+permalink: stats/probability/sigma-algebras
 ---
 
 # Measure Theory and Sigma Algebras

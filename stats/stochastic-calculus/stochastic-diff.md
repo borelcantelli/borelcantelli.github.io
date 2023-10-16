@@ -5,6 +5,7 @@ parent: Stochastic Calculus
 grand_parent: Probability
 nav_order: 1
 has_toc: true
+permalink: stats/stochastic-diffeq
 ---
 
 # Basics of Stochastic Calculus
