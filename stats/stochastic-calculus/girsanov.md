@@ -4,7 +4,8 @@ title: Jump Processes
 parent: Stochastic Calculus
 grand_parent: Probability
 nav_order: 4
-has_toc: false
+has_children: true
+has_toc: true
 permalink: stats/stochastic-calculus/girsanov
 ---
 

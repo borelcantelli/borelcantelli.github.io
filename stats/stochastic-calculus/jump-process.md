@@ -5,6 +5,7 @@ parent: Stochastic Calculus
 grand_parent: Probability
 nav_order: 3
 has_toc: true
+has_children: true
 permalink: stats/stochastic-calculus/jumps
 ---
 
