@@ -4,7 +4,6 @@ title: Probability
 parent: Probability
 nav_order: 1
 has_children: true
-permalink: stats/probability
 ---
 
 Probability theory was not formalized until [A.N. Kolmogorov](https://en.wikipedia.org/wiki/Andrey_Kolmogorov), a Soviet mathematician, set out to view probability as a measure - and this viewpoint drew upon the work of [Henri Lebesgue](https://en.wikipedia.org/wiki/Henri_Lebesgue) who generalized the field of measure theory via integration. From calculus-based probability, we saw that a probability was either a sum or an integral over the density or mass function, and at the time of studying it, we did not necessarily need to connect the ideas of "measure" and "integration" together, but in order to better understand properties of probability, it is crucial to visit measure theory and to view probability as a measure. To this end, we will develop some rigor in understanding basic measure theory and apply it into probability.

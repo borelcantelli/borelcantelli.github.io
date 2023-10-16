@@ -30,7 +30,7 @@ The most fundamental *pure* jump process is the Poisson process, which is flat a
 
 Let $N(t)$ be a Poisson process. In order to make it a martingale, the monotonic increasing $N(t)$ should be demeaned. Of course at a given $N(t)$, $\E(N(t)) = \lambda t$ so one should expect $N(t)-\lambda t$ to be a martingale wrt the canonical filtration. This is the **compensated Poisson process** which looks like 
 
-![Compensated Poisson](compensated_poisson.png)
+![Compensated Poisson](compensated-poisson.png)
 
 The reader should check that this is indeed a martingale.
 
