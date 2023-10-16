@@ -3,7 +3,7 @@ layout: default
 title: Jump Processes
 parent: Stochastic Calculus
 grand_parent: Probability
-nav_order: 3
+nav_order: 4
 has_toc: false
 ---
 
