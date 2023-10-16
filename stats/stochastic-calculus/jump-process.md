@@ -209,8 +209,6 @@ $$
 
 This forms the Ito-Doeblin lemma for jump diffusion processes with one jump process albeit without rigorous proof. 
 
-533 486
-
 Note we do not write the above into differential form because it is not always possible to find a differential form for sums of jumps. The following is an example of when it is possible to use differential forms to express a jump process.
 
 ## Examples
