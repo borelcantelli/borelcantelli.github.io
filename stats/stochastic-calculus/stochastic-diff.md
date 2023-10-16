@@ -104,7 +104,7 @@ $$\langle g,g\rangle (T) = \lim_{n\to\infty} \sum_{(t_j, t_{j+1})\in \cv{T}_n} (
 
 where $\cv{T}_n$ is the set of subintervals of $[0,T)$ that get finer as $n\to\infty$. This essentially tracks how much movement the process $g$ changes over an interval $T$. There also is first order variation which measures the same limit over the absolute value of differences.
 
-Now define $$ \abs{\cv{T}_n} $$ as the maximum interval length of the partition. As $n\to\infty$ then $$\vert \cv{T}_n \vert \to 0$$. Furthermore, for any interval $[t_j,t_{j+1}) \in \cv{T}_n$, we have $$\vert t_{j+1} - t_j\vert \leq \vert \cv{T}_n \vert$$. 
+Now define $$ \abs{\cv{T}_n} $$ as the maximum interval length of the partition. As $n\to\infty$ then $\vert \cv{T}_n \vert \to 0$. Furthermore, for any interval $[t_j,t_{j+1}) \in \cv{T}_n$, we have $$\vert t_{j+1} - t_j\vert \leq \vert \cv{T}_n \vert$$. 
 
 Back to the quadratic variation of the Ito integral, let $t_k < s_1 < ... < s_n < t_{k+1}$ where $\Delta$ is constant on $[t_k, t_{j+1})$. That is, we partition the regions where $\Delta$ is constant into $m+1$ partitions. Within each partition, the differenced Ito integral is 
 
@@ -247,7 +247,7 @@ f(T, W_T) - f(0, W_0) &= \sum_{i=0}^{n-1}f_t(t_j,W_j)(t_{j+1}-t_j) + \sum_{i=0}^
 \end{align*} 
 $$
 
-The first time converges to $\int_0^T f_t(t,W_t) dt$ as the partitions get finer. By our definition of Ito's integral, the seoncd and third term converges to $\int_0^T f_x(t_j, W_t)dW_t$ and $\int_0^T f_{xx}(t, W_t)dt$. The final two terms converge to 0 by bounding $t_{j+1} - t_j$ with $$\vert \cv{T}_n \vert$$ or $$\vert W_{t-j} - W_{t_j} \vert$$ which is also 0 in the limit. Then as $n\to\infty$, the entire sum goes to 0 as well. The higher order terms also converge to 0 in the same manner. There should be caution taken when discussin the $f_{xx}$ term as it is not exactly correct to say that $(W(t_{j+1})-W(t_j))^2 \implies dW(t)dW(t) \implies dt$. Instead, to show that 
+The first time converges to $\int_0^T f_t(t,W_t) dt$ as the partitions get finer. By our definition of Ito's integral, the seoncd and third term converges to $\int_0^T f_x(t_j, W_t)dW_t$ and $\int_0^T f_{xx}(t, W_t)dt$. The final two terms converge to 0 by bounding $t_{j+1} - t_j$ with $$\vert \cv{T}_n \vert$$ or $$\vert W_{t-j} - W_{t_j} \vert$$ which is also 0 in the limit. Then as $n\to\infty$, the entire sum goes to 0 as well. The higher order terms also converge to 0 in the same manner. There should be caution taken when discussing the $f_{xx}$ term as it is not exactly correct to say that $(W(t_{j+1})-W(t_j))^2 \implies dW(t)dW(t) \implies dt$. Instead, to show that 
 
 $$
 \frac{1}{2} \sum_{i=0}^{n-1} f_{xx}(W_j, t_j)(W_{j+1} - W_j)^2 \stackrel{n\to\infty}{\to} \frac{1}{2}\int_0^T f_{xx}(W(t), t)dt
