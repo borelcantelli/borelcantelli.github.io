@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Probability Theory
+parent: Probability
 nav_order: 1
 has_children: true
 permalink: stats/probability
