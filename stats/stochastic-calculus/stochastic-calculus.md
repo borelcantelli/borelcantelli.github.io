@@ -2,7 +2,7 @@
 layout: default
 title: Stochastic Calculus
 parent: Probability
-nav_order: 3
+nav_order: 2
 has_toc: true
 permalink: stats/stochastic-calculus
 ---
