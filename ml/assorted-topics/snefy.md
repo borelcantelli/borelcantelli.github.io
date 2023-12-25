@@ -88,12 +88,131 @@ $$
 Therefore, we can conclude that 
 
 $$
-d\nu(x) = \frac{tr(V^T V \sigma(Wx +B) \sigma^T(Wx +B))}{\int tr(V^T V \sigma(Wx +B) \sigma^T(Wx +B)) d\mu(x)}
+d\nu(x) = \frac{tr(V^T V \sigma(Wt(x) +B) \sigma^T(Wt(x) +B))}{\int tr(V^T V \sigma(Wt(x) +B) \sigma^T(Wt(x) +B)) d\mu(x)}
 $$
 
-Here $V^T V$ is an $M \times M$ matrix, and $\sigma(Wx +B) \sigma(Wx + B)$ is also $M \times M$. The trace of this matrix is the sum of its diagonal which is a finite sum, so we can interchange the trace and integration in this case. So now we have:
+Here $V^T V$ is an $M \times M$ matrix, and $\sigma(Wt(x) +B) \sigma(Wt(x) + B)$ is also $M \times M$. The trace of this matrix is the sum of its diagonal which is a finite sum, so we can interchange the trace and integration in this case. Furthermore, $V$ does not depend on $x$ so it can be taken out of the integral. So now we have:
 
 $$
-d\nu(x) = \frac{tr(V^T V \sigma(Wx +B) \sigma^T(Wx +B))}{tr \left(\int V^T V \sigma(Wx +B) \sigma^T(Wx +B) d\mu(x)\right)}
+d\nu(x) = \frac{tr(V^T V \sigma(Wt(x) +B) \sigma^T(Wt(x) +B))}{tr \left(V^T V \int \sigma(Wt(x) +B) \sigma^T(Wt(x) +B) d\mu(x)\right)}
 $$
+
+Thus we are able to parameterize a probability density function with traces of the weights of a 2 layer neural network.
+
+## In Practice
+
+For simplicity, let $x$ be values between (0, 10) and $y = \exp(-2x)$. This is the kernel for the exponential distribution with rate 2. It needs a normalizing constant of 2 in the denominator. To implement this SNEFY, first we define the two layer neural network.
+
+```
+# Define Network Architecture
+import torch.nn as nn
+
+class Network(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size, activation):
+        self.layer1 = nn.Linear(input_size, hidden_size)
+        self.layer2 = nn.Linear(hidden_size, output_size, bias = False)
+        self.activate = activation
+
+    def forward(self, x):
+        out = self.layer1(x)
+        out = self.activate(out)
+        out = self.layer2(out)
+        return out
+```
+
+Now, we define the estimator. We assume a standard Gaussian base measure.
+
+```
+# import your network as well as Network
+import torch
+
+class Exponential:
+    def __init__(self, in_size, hidden_size, out_size, activate):
+        self.in_size = in_size
+        self.model = Network(in_size, hidden_size, out_size, activate)
+        self.layer1 = dict()
+
+        self.model.layer2.register_forward_hook(self._get_post_activation())
+
+    def _get_post_activation(self):
+        def hook(module, input, output):
+            self.layer1['l1'] = input 
+        return hook 
+
+    def t(self, x):
+        # identity
+        return x
+
+    def get_integrated_sigma(self, n_samples):
+        dist = torch.distributions.Normal(loc = torch.Tensor([0]), scale = torch.Tensor([1]))
+        samples = dist.rsample((n_samples, self.in_size))
+        with torch.no_grad():
+            _ = self.model(self.t(x))
+
+        post_activate = self.layer1['l1'].unsqueeze(2)
+        post_activate = post_activate @ post_activate.permute((0,2,1))
+        K = torch.mean(post_activate, dim=0)
+        return K
+
+    def get_density(self, x):
+        _V = self.model.layer2.weights
+        VTV = _V.permute((-1, -2)) @ _V 
+
+        with torch.no_grad():
+            _ = self.model(x)
+        post_activate = self.layer1['l1']
+        K = post_activate @ post_activate.permute((-1, -2))
+
+        normalizer = torch.trace(VTV @ self.integrated_sigma(1000))
+        density = torch.trace(VTV @ K)
+
+        return density / normalizer
+```
+Here, 
+
+- `_get_post_activation()` registers the hook to get the values of the layer post activation
+- `t()` is the data preprocessing transform
+- `get_integrated_sigma()` uses LLN to estimate the integral of the activation function with respect to a Gaussian base measure
+- `get_density()` produces the density estimate for a given input $x$, by calculating the activation of input $x$, $V^T V$, the normalizer.
+
+To make it estimate an exponential distribution:
+
+```
+# import the estimator as Estimator
+# import matplotlib.pyplot as plt
+
+if __name__ == '__main__':
+    x = torch.rand((1000, 1)) * 10
+    y = torch.sqrt(torch.exp(-2 * x[:,0]).unsqueeze(1))
+
+    exp_model = Exponential(in_size=1, hidden_size=128, out_size=1)
+
+    criterion = torch.nn.MSELoss()
+    optim = torch.optim.NAdam(exp_model.model.parameters(), lr = 0.0001)
+
+    for epoch in range(100):
+        yhat = exp_model.model(x)
+        loss = criterion(yhat, y)
+
+        optim.zero_grad()
+        loss.backward()
+        optim.step()
+    
+    # at this point, the model should be trained to replicate the square root of the Exp(2) distribution
+
+    with torch.no_grad():
+        xx = np.arange(0, 3, step=0.1)
+        fx = []
+        for x in xx:
+            fx.append(exp_model.get_density(torch.from_numpy(np.array([x])).to(dtype=torch.float32)))
+    
+    plt.plot(xx, fx, color='r')
+    plt.show()
+```
+
+We expect this plot to show something very close to the true density. The following plots were generated with more efficient code, and produces estimates of the normalizing value.
+
+![snefy](snefy.png)
+
+The normalizing constant was estimated to be 1.9493. This is fairly accurate, as seen on the plot. The 2 layer network model will integrate to 1, but the reason the normalizing constant is different is an artefact of loss minimization when training the model to fit y onto x.
 
