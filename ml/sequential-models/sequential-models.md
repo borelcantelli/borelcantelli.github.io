@@ -2,7 +2,7 @@
 layout: default
 title: Sequential Models
 parent: Sequential Models
-grand_parent: Basics of Machine Learning
+grand_parent: Machine Learning
 nav_order: 1
 has_children: true
 permalink: ml/sequential-models/first-models

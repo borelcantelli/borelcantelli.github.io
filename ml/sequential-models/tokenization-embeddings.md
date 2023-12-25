@@ -2,7 +2,7 @@
 layout: default
 title: Tokenization and Embeddings
 parent: Sequential Models
-grand_parent: Basics of Machine Learning
+grand_parent: Machine Learning
 nav_order: 2
 has_children: true
 permalink: ml/sequential-models/token-embeddings
