@@ -33,6 +33,18 @@ Matrix multiplication is the core of neural networks. The weights and biases are
 
 ## Squared Neural Families
 
-Suppose we have a function $f(x; \theta)$ which is a neural network of the form $f(x; \theta) = V\sigma(Wx +B)$. This is a 2 layer neural network, with no bias on the second layer, and activation function $\sigma(.)$. 
+Suppose we have a function $f(x; \theta)$ which is a neural network of the form $f(x; \theta) = V\sigma(Wx +B)$. This is a 2 layer neural network, with no bias on the second layer, and activation function $\sigma(.)$. $f$ is not guaranteed to be $\geq 0$, which is a requirement for normalizable functions for use as probabilities. To rectify this, simply square the function (in the case of vector valued $f$, take the square of the Euclidean norm).
+
+Let $\sigma(x) := \sigma(Wx+B)$. Thus $\|f\|_2^2 = f^T f$ gives:
+
+$$
+(f^T f)(x) = \sigma^T(x)V^T V \sigma(x) \geq 0
+$$
+
+To normalize this function, divide it by its integral, with respect to the measure of $x$.
+
+$$
+f_X(x) = \frac{f^Tf}{\int f^T f d\mu(x)} = \frac{\sigma^T(x)V^T V \sigma(x)}{\int \sigma^T(x)V^T V \sigma(x) d\mu(x) }
+$$
 
 
