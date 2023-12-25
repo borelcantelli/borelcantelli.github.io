@@ -35,16 +35,48 @@ Matrix multiplication is the core of neural networks. The weights and biases are
 
 Suppose we have a function $f(x; \theta)$ which is a neural network of the form $f(x; \theta) = V\sigma(Wx +B)$. This is a 2 layer neural network, with no bias on the second layer, and activation function $\sigma(.)$. $f$ is not guaranteed to be $\geq 0$, which is a requirement for normalizable functions for use as probabilities. To rectify this, simply square the function (in the case of vector valued $f$, take the square of the Euclidean norm).
 
-Let $\sigma(x) := \sigma(Wx+B)$. Thus $\|f\|_2^2 = f^T f$ gives:
+Let $\sigma(\Theta) := \sigma(Wx+B)$. Thus $\|f\|_2^2 = f^T f$ gives:
 
 $$
-(f^T f)(x) = \sigma^T(x)V^T V \sigma(x) \geq 0
+(f^T f)(x) = \sigma^T(\Theta)V^T V \sigma(\Theta) \geq 0
 $$
 
 To normalize this function, divide it by its integral, with respect to the measure of $x$.
 
 $$
-f_X(x) = \frac{f^Tf}{\int f^T f d\mu(x)} = \frac{\sigma^T(x)V^T V \sigma(x)}{\int \sigma^T(x)V^T V \sigma(x) d\mu(x) }
+d\nu(x) = \frac{f^Tf}{\int f^T f d\mu(x)} = \frac{\sigma^T(\Theta)V^T V \sigma(x)}{\int \sigma^T(\Theta)V^T V \sigma(\Theta) d\mu(x) }
+$$
+
+To understand this function better, let $x \in \mathbf{R}^{N x 1}$, $W \in \mathbf{R}^{M \times N}$ and $V \in \mathbf{M \times O}$. Thus the network $f$ takes the $N$ vector and casts it to $O$ dimensional space, with one hidden layer of size $M$. 
+
+$Wx + B$ is a $M \times 1$ vector, and the activation is applied element-wise, so it does not affect dimensionality. $\sigma(\Theta)^T$ is $1 \times M$ and $V^T$ is $M \times O$ therefore, $\sigma(\Theta)^T V^T$ is $1 \times O$. Likewise, $V\sigma(\Theta)$ is $O \times 1$, so $f^T f$ is representable as a scalar, which is the same as its trace.
+
+In fact, this all holds true even if we have $Wt(x) + B$, where $t(.)$ is some function applied onto $x$ either element-wise or batch-wise. What exactly goes into the scalar of $f^T f$? Note that $\sigma(\Theta)$ is:
+
+$$
+\begin{bmatrix}
+\sigma(W_{1\cdot} \cdot t(x) + B_1) \\
+\sigma(W_{2\cdot} \cdot t(x) + B_2) \\
+\vdots \\
+\sigma(W_{m\cdot} \cdot t(x) + B_m) 
+\end{bmatrix}
+$$
+
+So $f = V\sigma(\Theta)$ is:
+
+$$
+\begin{bmatrix}
+V_{1\cdot} \sum_{i=1}^m \sigma(W_{i\cdot} \cdot t(x) + B_i) \\
+V_{2\cdot} \sum_{i=1}^m \sigma(W_{i\cdot} \cdot t(x) + B_i) \\
+\vdots \\
+V_{O\cdot} \sum_{i=1}^m \sigma(W_{i\cdot} \cdot t(x) + B_i) \\
+\end{bmatrix}
+$$
+
+Thus $f^T f$ becomes:
+
+$$
+\sum_{k=1}^m \sum_{i=1}^m V_{k\cdot}^T V_{k\cdot}^T  \sigma(W_{i\cdot} \cdot t(x) + B_i) \sigma(W_{i\cdot} \cdot t(x) + B_i)
 $$
 
 
