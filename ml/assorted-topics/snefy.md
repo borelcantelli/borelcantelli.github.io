@@ -76,7 +76,24 @@ $$
 Thus $f^T f$ becomes:
 
 $$
-\sum_{k=1}^m \sum_{i=1}^m V_{k\cdot}^T V_{k\cdot}^T  \sigma(W_{i\cdot} \cdot t(x) + B_i) \sigma(W_{i\cdot} \cdot t(x) + B_i)
+\sum_{k=1}^m \sum_{i=1}^m \sigma(W_{i\cdot} \cdot t(x) + B_i)^T V_{k\cdot}^T V_{k\cdot}  \sigma(W_{i\cdot} \cdot t(x) + B_i) 
 $$
 
+This is the trace of $\sigma^T(\Theta) V^T V \sigma(\Theta)$. By the cycle property of the trace:
+
+$$
+tr(\sigma^T V^T V \sigma) = tr(V^T V \sigma \sigma^T)
+$$
+
+Therefore, we can conclude that 
+
+$$
+d\nu(x) = \frac{tr(V^T V \sigma(Wx +B) \sigma^T(Wx +B))}{\int tr(V^T V \sigma(Wx +B) \sigma^T(Wx +B)) d\mu(x)}
+$$
+
+Here $V^T V$ is an $M \times M$ matrix, and $\sigma(Wx +B) \sigma(Wx + B)$ is also $M \times M$. The trace of this matrix is the sum of its diagonal which is a finite sum, so we can interchange the trace and integration in this case. So now we have:
+
+$$
+d\nu(x) = \frac{tr(V^T V \sigma(Wx +B) \sigma^T(Wx +B))}{tr \left(\int V^T V \sigma(Wx +B) \sigma^T(Wx +B) d\mu(x)\right)}
+$$
 
