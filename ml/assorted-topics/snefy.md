@@ -230,7 +230,7 @@ Let $Z = (X_1, X_2)$ be a joint SNEFY distribution. So $P(dz) \propto tr(V\sigma
 
 ### Sufficient Statistics
 
-We can easily factor the SNEFY density into a function that depends on $X$ via $T(X)$, the transformation, and another portion that does not depend on the parameters $W, B, V$. Thus by the Fisher-Neyman Factorization Theorem, $T(X)$ is a sufficient statistic. While this result is not fascinating in itself, it allows for better understanding of statistic inference on data distributions that can be parameterized by SNEFY class distributions.
+We can easily factor the SNEFY density into a function that depends on $X$ via $T(X)$, the transformation, and another portion that does not depend on the parameters $W, B, V$. Thus by the Fisher-Neyman Factorization Theorem, $T(X)$ is a sufficient statistic. While this result is not fascinating in itself, it allows for better understanding of statistic inference on data distributions that can be parameterized by SNEFY class distributions, and understanding estimation conditions and bounds for the parameters W, V, B.
 
 
 
