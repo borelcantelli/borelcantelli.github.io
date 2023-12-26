@@ -10,7 +10,7 @@ permalink: ml/assorted-topics/snefy
 
 # Squared Neural Families
 
-This is based on [Squared Neural Families](https://arxiv.org/pdf/2305.13552.pdf) from NeurIPS 2023. They authors propose a new class of models based on neural networks that serve as density functions. A little more formally, they have created a parameterization of density models, whose parameters are based on the weights and biases of a network.
+This is based on [Squared Neural Families](https://arxiv.org/pdf/2305.13552.pdf) from NeurIPS 2023. They authors propose a new class of models based on neural networks that serve as probability density functions. A little more formally, the authors propose a parameterization of density models, whose parameters are based on the weights and biases of a network. Note that while this is a parametric model for densities, it is not necessarily identifiable, as different sets of parameters can produce the same density function.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ $$
 f(x) = \frac{g(x)}{\int g(x) d\mu(x)} 
 $$
 
-where $\mu(x)$ is the measure to which $g$ is integrated.
+where $\mu(x)$ is the measure on $x$ to which $g$ is integrated.
 
 Integration of $g$ may be intractable, so we invoke the law of large numbers and perform stochastic integration. $\mu(x)$ luckily gives us a base measure, and we can generate samples from the random variable associated with the base measure. Then $\int g(x)d\mu(x) = E(g(X))$. So $E(g(X))$ can be approximated with $\frac{1}{N} \sum_{i=1}^N g(X_i)$ where $X$ is sampled from some underlying distribution with respect to the base measure $\mu$. This converges in probability to $E(g(X))$ per LLN.
 
@@ -41,10 +41,10 @@ $$
 (f^T f)(x) = \sigma^T(\Theta)V^T V \sigma(\Theta) \geq 0
 $$
 
-To normalize this function, divide it by its integral, with respect to the measure of $x$.
+To normalize this function, divide it by its integral, with respect to the measure of $x$. Probability densities that can be expressed as the following are belong to the SNEFY (Squared Neural Family) class of distributions.
 
 $$
-d\nu(x) = \frac{f^Tf}{\int f^T f d\mu(x)} = \frac{\sigma^T(\Theta)V^T V \sigma(x)}{\int \sigma^T(\Theta)V^T V \sigma(\Theta) d\mu(x) }
+P(dx) = \frac{f^Tf}{\int f^T f d\mu(x)} \mu(dx) = \frac{\sigma^T(\Theta)V^T V \sigma(x)}{\int \sigma^T(\Theta)V^T V \sigma(\Theta) \mu(dx) } \mu(dx)
 $$
 
 To understand this function better, let $x \in \mathbf{R}^{N x 1}$, $W \in \mathbf{R}^{M \times N}$ and $V \in \mathbf{M \times O}$. Thus the network $f$ takes the $N$ vector and casts it to $O$ dimensional space, with one hidden layer of size $M$. 
@@ -215,4 +215,26 @@ We expect this plot to show something very close to the true density. The follow
 ![snefy](snefy.png)
 
 The normalizing constant was estimated to be 1.9493. This is fairly accurate, as seen on the plot. The 2 layer network model will integrate to 1, but the reason the normalizing constant is different is an artefact of loss minimization when training the model to fit y onto x.
+
+## Statistical Extensions
+
+With a new class of distributions, a few things can be discussed about its statistical properties. These proofs are detailed in the paper, but some very high level proof outlines are provided. Maybe they will be discussed here one day.
+
+### Maximum Likelihood Estimation
+
+With a model being parameterized by a finite dimensional parameter space, maximum likelihood can be used to fit the parameters. Under the usual maximum likelihood assumptions, assume the data is sampled from a SNEFY class. Then we can minimize the negative log likelihood. 
+
+### Marginals and Conditionals
+
+Let $Z = (X_1, X_2)$ be a joint SNEFY distribution. So $P(dz) \propto tr(V\sigma(W_1t_1(x_1) + B_1 + W_2t_2(x_2) + B_2) d\mu(z)$. Futhermore let the base measure $\mu(z) = \mu(x_1)\mu(x_2)$, Then the marginals $X_1$ and $X_2$ are also SNEFY. This can be proven by integrating out the respective marginal, and leveraging the property of traces and integrals, and independent base measures. Likewise, it is straight forward to show that the joint distribution also yields SNEFY classed conditional distirbutions. 
+
+### Sufficient Statistics
+
+We can easily factor the SNEFY density into a function that depends on $X$ via $T(X)$, the transformation, and another portion that does not depend on the parameters $W, B, V$. Thus by the Fisher-Neyman Factorization Theorem, $T(X)$ is a sufficient statistic. While this result is not fascinating in itself, it allows for better understanding of statistic inference on data distributions that can be parameterized by SNEFY class distributions.
+
+
+
+
+
+
 
