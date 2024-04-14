@@ -110,7 +110,7 @@ $$V(s) = \mathbb{E}(R_{t+1} \vert  S_t=s) + \gamma \mathbb{E}(V(s') \vert  S_t=s
 Note how we created a recursive definition of $V$. This expectation is over the reward space, and the value functions - functions of future states. 
 
 **Exercise**: Show that $Q(s, a) = \mathbb{E}(R_{t+1} + \gamma Q(s',a')\vert S_t=s, A_t=a)$.
-Hint: Follow the same path as with the $V$ example above. Argue that $Q(s,a) = \mathbb{E}(R_{t+1} + \gamma V(s')\vert S_t=s, A_t=a). Argue that $V(s')$ is just a marginalized $Q(s',a')$ over the action space $a'$.
+Hint: Follow the same path as with the $V$ example above. Argue that $Q(s,a) = \mathbb{E}(R_{t+1} + \gamma V(s')\vert S_t=s, A_t=a)$. Argue that $V(s')$ is just a marginalized $Q(s',a')$ over the action space $a'$.
 
 ## Derivations of V and Q as functions of States, Actions, and Rewards
 
