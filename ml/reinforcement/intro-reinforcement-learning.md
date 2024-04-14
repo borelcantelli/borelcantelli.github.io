@@ -20,8 +20,13 @@ $$Q_{\pi}(s,a) = E(G_t | S_t = s, a_t=a)$$
 Given a policy $\pi$, which is a probability distribution over the action space $a$:
 
 $$V_{\pi}(s,a) = E(G_t|S_t=s)$$
+
 $$= E_{a\sim \pi}(E(G_t|S_t=s,a_t=a))$$
+
 $$= E_{a\sim \pi}(Q_{\pi})$$
+
 $$= \sum_{a\in A} Q_{\pi} \pi(a)$$
+
 Generalizing to:
+
 $$\int_{a\in A} Q_{\pi}(s,a) d\pi(a)$$
