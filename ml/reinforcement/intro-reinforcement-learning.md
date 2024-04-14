@@ -66,6 +66,8 @@ We understand this to mean
 
 ## Derivations of V and Q as Recursive Functions
 
+## Derivations of V and Q as Recursive Functions
+
 Let's dissect the value and quality function more:
 
 $$\\
