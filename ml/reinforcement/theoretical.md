@@ -150,6 +150,6 @@ $$\pi^*(a\vert s) = \arg\max_{\pi} Q_\pi(s,a)$$
 
 Simply put, the optimal policy is the one that optimizes the value function or $Q$ function.
 
-The policy that maximizes the $Q$ function produces a policy that will be more optimal than the policy that maximizes the $V$ function. This is because the $Q$ function is a function of both the state and action spaces, and thus can capture more information about the environment than the $V$ function. We can see this from the following inequality:
+Provided that the $Q$ and $V$ functions are non-negative (integrability is assumed), the policy that maximizes the $Q$ function produces a policy that will be more optimal than the policy that maximizes the $V$ function. This is because the $Q$ function is a function of both the state and action spaces, and thus can capture more information about the environment than the $V$ function. We can see this from the following inequality:
 
 $$V^*(s) = \sup_{\pi} \int_{a\in A} Q(s,a)d\pi(a|s) \leq \int_{a\in A} \sup_\pi Q(s,a) d\pi(a|s) = \int_{a\in A} Q^*(s,a) d\pi(s|a)$$
