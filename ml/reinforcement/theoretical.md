@@ -8,6 +8,12 @@ has_children: true
 permalink: ml/reinforcement-learning/theoretical-foundations
 ---
 
+# Theoretical Foundations
+
+We present some defintions and derivations that are foundational to understanding reinforcement learning. We start with the definitions of the value and quality functions, and then derive the Bellman equations. We then discuss the optimal policy and how to solve the Bellman equations for the optimal policy. All of this is theoretical, and none of this is actually implemented in practice since the information required to solve for optimal policy usually is not available. Nonetheless, these theoretical foundations are important to understand the algorithms that are used in practice.
+
+Much of theoretical reinforcement learning draws upon stochastic optimization, however we present in a statistically oriented manner.
+
 ## Environment Model
 
 An environment is an MDP. That is, the next state and reward only depends on the previous state and action taken. It does not rely on the entire history of states and actions. We can model the environment as a Markov chain, with states as nodes and edges as actions. We model the environment with transition probabilities:
@@ -222,7 +228,7 @@ Policy iteration is the iterative process of evaluating the policy, and then imp
 
 1. Initialize the policy $\pi$ randomly, note the current state.
 2. Evaluate the policy $\pi$ by calculating the $V$ function.
-3. Take an action based on $\pi$, and improve the policy by calculating the $Q$ function and updating the policy with the argmax.
+3. Take an action based on $\pi$, and improve the policy by calculating the $Q$ function and updating the policy with the argmax. (This is called a greedy policy update)
 4. Repeat steps 2 and 3 until the policy converges to the optimal policy.
 
 In step 3, we take an action based on the policy, and then update the policy based on the $Q$ function. This is called an **on-policy** algorithm, since we learn the policy while interacting with the environment using the said policy. An **off-policy** algorithm is one where we learn the policy while interacting with the environment using a different policy, for example, we can evaluate the policy by randomly sampling an action to take in our updates to $Q$.
