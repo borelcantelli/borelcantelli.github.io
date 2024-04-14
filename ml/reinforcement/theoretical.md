@@ -164,7 +164,7 @@ Note this does not necessarily hold true in general cases, since $V$ or $Q$ coul
 </details>
 
 
-### Optimal Policy and Bellman Equations
+### Optimal Values and Bellman Equations
 
 To find the optimal $V$ and $Q$, we simply replace the expectation with respect to action, with the best action we can take when rewriting the Bellman equations. Intuitively, we no longer consider the average action, but rather the best action.
 
@@ -183,4 +183,48 @@ which makes an alternative formulation of $Q^*$ as
 $$Q^*(s,a) = R(s,a) + \gamma \int_{s'\in S} \sup_{a'\in A} Q^*(s',a') d\mathbb{P}_{s'\vert s,a}$$
 
 where the $V^\*$ is replaced with the $\sup_{a'\in A} Q^\*(s',a')$.
+
+### Solving the Optimal Bellman Equations
+
+Suppose we have full information on the model and the rewards. We can solve the Bellman equations for the optimal $V$ and $Q$ functions. We can then use these functions to find the optimal policy. This can be done in a dynamic programming approach, where we iteratively update the $V$ or $Q$ functions until they converge to the optimal values. 
+
+#### Evaluating the Policy
+
+For any given policy $\pi$, we take $V_{t+1}(s)$, the value of state $s$ at time $t+1$ as:
+
+$$\mathbf{E}_\pi(r + \gamma V_t(s')\vert S_t=s) = \int_{a\in A} \int_{s' \times r} (r + \gamma V_t(s')) d\mathbb{P}(s', r \vert s, a)d\pi(a|s)$$
+
+Note here that $s'$ is the state at $t+1$.
+
+#### Improving the Policy
+
+This evaluates the policy by taking the value of state $s$, after an action has been taken. To improve the policy, we need to understand how to evaluate the actions taken by the agent. This information can be given by the $Q$ function which is a function of both state and action. The $Q$ value is given by:
+
+$$Q_\pi(s,a) = \mathbb{E}(R_{t+1} + \gamma V_\pi(S')\vert S_t = s, A_t=a) = \int_{s\times r \in (S, R)}r + \gamma V_\pi(s') d\mathbb{P}(s', r\vert s, a)$$
+
+Having the $Q$ value defined, we define $\pi'(s)$, the update of the policy, as 
+
+$$\pi'(s) = \arg\max_{a\in A} Q_\pi(s, a)$$
+
+We are guaranteed an improvement since
+
+$$
+\begin{align*}
+Q_\pi(s, \pi'(s)) &= \max_{a\in A} Q_\pi(s, a)\\
+\end{align*}
+$$
+
+As seen before, $\max_{a\in A}Q_\pi(s,a) \geq V_\pi(s)$ leveraging the maximal properties of averaging. So we have developed a policy that is better than the previous policy when conditioned on state $s$. 
+
+#### Policy Iteration
+
+Policy iteration is the iterative process of evaluating the policy, and then improving the policy. This process is repeated until the policy converges to the optimal policy. The policy iteration algorithm is as follows:
+
+1. Initialize the policy $\pi$ randomly, note the current state, and take an action.
+2. Evaluate the policy $\pi$ by calculating the $V$ function.
+3. Improve the policy by calculating the $Q$ function and updating the policy with the argmax.
+4. Repeat steps 2 and 3 until the policy converges to the optimal policy.
+
+
+Unfortunately, the model for the environment is not typically known, so we cannot directly calculate the optimal $V$ or $Q$. We can only estimate these values. This is where we change the paradigm from dynamic programming, to a stochastic approach where the agent learns the optimal policy through experience.
 
