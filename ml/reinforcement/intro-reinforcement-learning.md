@@ -31,6 +31,8 @@ Generalizing to:
 
 $$\int_{a\in A} Q_{\pi}(s,a) d\pi(a)$$
 
+Primarily, we view $V$ as the marginalize $Q$, with respect to the distribution over the action space.
+
 But $Q$ is also an expectation, so:
 
 $$V_{\pi}(s) = \int_{a\in A} \mathbb{E}(G_t\vert s_t=s, a_t=a) d\pi(a)$$
@@ -43,11 +45,16 @@ We understand this to mean
 
 Let's dissect the value and quality function more:
 
-$$V(s) = \mathbb{E}(G_t \vert  S_t=s)$$
+$$\\
 
-$$V(s) = \mathbb{E}(R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... \vert  S_t=s)$$
+\begin{align*}
+V(s) &= \mathbb{E}(G_t \vert  S_t=s)\\
 
-$$V(s) = \mathbb{E}(R_{t+1} + \gamma(R_{t+2} + \gamma R_{t+3} + ...) \vert  S_t=s)$$
+&= \mathbb{E}(R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... \vert  S_t=s)\\
+
+&= \mathbb{E}(R_{t+1} + \gamma(R_{t+2} + \gamma R_{t+3} + ...) \vert  S_t=s)
+\end{align*}
+$$
 
 Noting this recursive definition, we replace everything in $\gamma(...)$ with $G_{t+1}$.
 
@@ -63,4 +70,10 @@ Continuing from above:
 
 $$V(s) = \mathbb{E}(R_{t+1} \vert  S_t=s) + \gamma \mathbb{E}(V(s') \vert  S_t=s) = \mathbb{E}(R_{t+1} + \gamma V(s')\vert S_t=s)$$
 
-Note how we created a recursive definition of $V$.
+Note how we created a recursive definition of $V$. This expectation is over the reward space, and the value functions - functions of future states. 
+
+**Exercise**: Show that $Q(s, a) = \mathbb{E}(R_{t+1} + \gamma Q(s',a')\vert S_t=s, A_t=a)$.
+Hint: Follow the same path as with the $V$ example above. Start with the definition and factor out the $\gamma$ to get an expectation of a reward + a discounted $G$. Invoke law of iterated expectation, and substitute with $Q(s',a')$.
+
+
+
