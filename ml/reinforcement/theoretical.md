@@ -158,3 +158,22 @@ $$V^*(s) = \sup_{\pi} \int_{a\in A} Q(s,a)d\pi(a|s) \leq \int_{a\in A} \sup_\pi 
 
 Note this does not necessarily hold true in general cases, since $V$ or $Q$ could be negative depending on how rewards are defined.
 
+### Optimal Policy and Bellman Equations
+
+To find the optimal $V$ and $Q$, we simply replace the expectation with respect to action, with the best action we can take when rewriting the Bellman equations. Intuitively, we no longer consider the average action, but rather the best action.
+
+$$V^*(s) = \sup_{a\in A} (R(s,a) + \gamma \int_{s'\in S} V(s') d\mathbb{P}_{s'\vert s,a}) $$
+
+Then optimal $Q^*$ is:  
+
+$$Q^*(s,a) = R(s,a) + \gamma \int_{s'\in S} V^*(s') d\mathbb{P}_{s'\vert s,a}$$
+
+We also can write optimal $V^*$ as 
+
+$$V^*(s) = \sup_{a\in A} Q^*(s,a)$$
+
+which makes an alternative formulation of $Q^*$ as
+
+$$Q^*(s,a) = R(s,a) + \gamma \int_{s'\in S} \sup_{a'\in A} Q^*(s',a') d\mathbb{P}_{s'\vert s,a}$$
+
+where the $V^*$ is replaced with the $\sup_{a'\in A} Q^*(s',a')$.
