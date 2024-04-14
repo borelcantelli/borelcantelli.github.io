@@ -137,7 +137,7 @@ $$Q(s,a) = R(s,a) + \gamma \int_{s'\in S} \int_{a'\in A} Q(s',a') d\pi(a'\vert s
 
 We have written this as an integral, but it can be written as a summation as well. This is the Bellman equation for $Q$.
 
-$$Q(s,a) = R(s,a) + \gamma \sum_{s'\in S}\mathbb{P}_{s'\vert s,a} \int_{a'\in A} Q(s',a') \pi(a'\vert s')$$
+$$Q(s,a) = R(s,a) + \gamma \sum_{s'\in S}\mathbb{P}_{s'\vert s,a} \sum_{a'\in A} Q(s',a') \pi(a'\vert s')$$
 
 We write this in form of an integral to make clear what is being summed over, and what is being integrated over. There are some marginalizations going on here, and it is not clear what is being marginalized over what. Thus we use integral notation to be clear.
 
