@@ -152,11 +152,17 @@ $$\pi^*(a\vert s) = \arg\max_{\pi} Q_\pi(s,a)$$
 
 Simply put, the optimal policy is the one that optimizes the value function or $Q$ function.
 
+<details>
+<summary>Let $Q$ and $V$ be only positively valued. Let $\pi$ be the policy that optimizes $V$ to give $V^*$. Prove that there exists a policy that optimizes $Q$ that is produces a policy with a higher $V$ than $V^*$. *Note*: We optimized $V$ but $V$ is an average over all possible actions per state. $Q$ is a function of both state and action spaces, and thus can capture more information about the environment than $V$.
+</summary>
+
 Provided that the $Q$ and $V$ functions are non-negative (integrability is assumed), the policy that maximizes the $Q$ function produces a policy that will be more optimal than the policy that maximizes the $V$ function. This is because the $Q$ function is a function of both the state and action spaces, and thus can capture more information about the environment than the $V$ function. We can see this from the following inequality:
 
 $$V^*(s) = \sup_{\pi} \int_{a\in A} Q(s,a)d\pi(a|s) \leq \int_{a\in A} \sup_\pi Q(s,a) d\pi(a|s) = \int_{a\in A} Q^*(s,a) d\pi(s|a)$$
 
 Note this does not necessarily hold true in general cases, since $V$ or $Q$ could be negative depending on how rewards are defined.
+</details>
+
 
 ### Optimal Policy and Bellman Equations
 
@@ -177,3 +183,4 @@ which makes an alternative formulation of $Q^*$ as
 $$Q^*(s,a) = R(s,a) + \gamma \int_{s'\in S} \sup_{a'\in A} Q^*(s',a') d\mathbb{P}_{s'\vert s,a}$$
 
 where the $V^*$ is replaced with the $\sup_{a'\in A} Q^*(s',a')$.
+
