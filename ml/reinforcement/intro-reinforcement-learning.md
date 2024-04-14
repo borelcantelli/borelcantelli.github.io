@@ -9,9 +9,29 @@ permalink: ml/reinforcement-learning
 
 # Reinforcement Learning
 
-Lorem ipsum
+There are three primary components in reinforcement learning: agent, environment, and rewards. The agent interacts with the environment by taking actions, and receives rewards based on the actions taken. The agent learns to make decisions by maximizing the rewards over time.
 
-$$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = \sum_{i=1}^\infty \gamma^k R_{t+k+1}$$
+In reinforcement learning, the agent learns to make decisions by performing certain actions and receiving rewards. The model learns to perform the best action that maximizes the reward over time. That is, the model learns by interacting with the environment, and receives rewards. These rewards are used to iterate the model as it continues to interact and collect experience.
+
+
+## Model
+
+An environment is an MDP. That is, the next state and reward only depends on the previous state and action taken. It does not rely on the entire history of states and actions. We can model the environment as a Markov chain, with states as nodes and edges as actions. We model the environment with transition probabilities:
+
+$$
+\mathbb{P}(S'=s', R'=r \vert S=s, A=a)
+$$
+
+This is the probability of observing that the next state is $s'$ with reward $r$, provided we are currently in state $s$ and took action $a$.
+
+We can marginalize out $R$ and get the state transitions: $\mathbb{P}(S'=s'\vert S=s, A=a)$. 
+
+This gives the notion of model-free and model-based RL.
+
+
+## Definitions
+
+$$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = \sum_{i=0}^\infty \gamma^k R_{t+k+1}$$
 
 $$V_{\pi}(s) = \mathbb{E}(G_t \vert  S_t=s)$$
 
@@ -43,6 +63,8 @@ We understand this to mean
 1. $\mathbb{E}(G_t \vert s_t=s, a_t=a)$ the future discounted rewards given we are at state $s$ and take action $a$.
 2. Marginalize by action $a$ to make this only depend on the state $s$, which gives the value $V$. 
 3. We arrive at our $(s,a)$ pairs via policy $a_t \sim \pi(a_t\vert s_t)$, for some given initialized $s_0$.
+
+## Derivations of V and Q as Recursive Functions
 
 Let's dissect the value and quality function more:
 
