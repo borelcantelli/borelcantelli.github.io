@@ -39,7 +39,7 @@ We understand this to mean
 
 1. $E(G_t \|s_t=s, a_t=a)$ the future discounted rewards given we are at state $s$ and take action $a$.
 2. Marginalize by action $a$ to make this only depend on the state $s$, which gives the value $V$. 
-3. We arrive at our $(s,a)$ pairs via policy $a_t \sim \pi(a_t|s_t)$, for some given initialized $s_0$.
+3. We arrive at our $(s,a)$ pairs via policy $a_t \sim \pi(a_t\|s_t)$, for some given initialized $s_0$.
 
 Let's dissect the value and quality function more:
 
