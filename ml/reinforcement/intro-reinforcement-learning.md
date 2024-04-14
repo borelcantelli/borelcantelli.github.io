@@ -19,13 +19,14 @@ $$Q_{\pi}(s,a) = \mathbb{E}(G_t \vert  S_t = s, a_t=a)$$
 
 Given a policy $\pi$, which is a probability distribution over the action space $a$:
 
-$$V_{\pi}(s) = \mathbb{E}(G_t \vert S_t=s)$$
-
-$$= \mathbb{E}_{a\sim \pi}(\mathbb{E}(G_t \vert S_t=s,a_t=a))$$
-
-$$= \mathbb{E}_{a\sim \pi}(Q_{\pi})(s,a)$$
-
-$$= \sum_{a\in A} Q_{\pi}(s,a) \pi(a)$$
+$$
+\begin{align*}
+V_{\pi}(s) &= \mathbb{E}(G_t \vert S_t=s)\\
+&= \mathbb{E}_{a\sim \pi}(\mathbb{E}(G_t \vert S_t=s,a_t=a))\\
+&= \mathbb{E}_{a\sim \pi}(Q_{\pi})(s,a)\\
+&= \sum_{a\in A} Q_{\pi}(s,a) \pi(a) \\
+\end{align*}
+$$
 
 Generalizing to:
 
@@ -77,6 +78,8 @@ Note how we created a recursive definition of $V$. This expectation is over the 
 
 **Exercise**: Show that $Q(s, a) = \mathbb{E}(R_{t+1} + \gamma Q(s',a')\vert S_t=s, A_t=a)$.
 Hint: Follow the same path as with the $V$ example above. Start with the definition and factor out the $\gamma$ to get an expectation of a reward + a discounted $G$. Invoke law of iterated expectation, and substitute with $Q(s',a')$.
+
+
 
 
 
