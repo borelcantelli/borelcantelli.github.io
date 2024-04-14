@@ -118,26 +118,26 @@ The equations above are still not very useful for the agent. We need to define $
 
 $$V_{\pi}(s) = \mathbb{E}_{a\sim \pi}(Q_\pi(s,a)) = \int_{a\in A} Q(s,a) d\pi(a)$$
 
-For notation, we denote $R(s,a)$ as $\mathbb{E}(R_{t+1}|S_t=s, A_t=a)$. This is the expected reward for taking action $a$ in state $s$.
+For notation, we denote $R(s,a)$ as $\mathbb{E}(R_{t+1}\vert S_t=s, A_t=a)$. This is the expected reward for taking action $a$ in state $s$.
 
 $$\\
 \begin{align*}
 Q(s,a) &= \mathbb{E}(R_{t+1} + \gamma V(s')\vert S_t=s, A_t=a) \\
 &= R(s,a) + \gamma \mathbb{E}(V(s') \vert S_t=s, A_t=a)\\ 
-&= R(s,a) + \gamma \mathbb{E}_{s'|s,a}(V(s'))\\ 
-&= R(s,a) + \gamma \int_{s'\in S} V(s') d\mathbb{P}_{s'|s,a} \\ 
+&= R(s,a) + \gamma \mathbb{E}_{s'\vert s,a}(V(s'))\\ 
+&= R(s,a) + \gamma \int_{s'\in S} V(s') d\mathbb{P}_{s'\vert s,a} \\ 
 
-We know that $V(s)$ can be represented as $\int_{a\in A} \pi(a|s)Q(s,a) da$, which is the marginalization of $Q(s,a)$ over the distribution of actions:
+We know that $V(s)$ can be represented as $\int_{a\in A} \pi(a\vert s)Q(s,a) da$, which is the marginalization of $Q(s,a)$ over the distribution of actions:
 
-$$V(s) = \int_{a\in A} Q(s,a) d\pi(a|s)$$
+$$V(s) = \int_{a\in A} Q(s,a) d\pi(a\vert s)$$
 
 Substituting this into the $Q$ equation:
 
-$$Q(s,a) = R(s,a) + \gamma \int_{s'\in S} \int_{a'\in A} Q(s',a') d\pi(a'|s') d\mathbb{P}_{s'|s,a}$$
+$$Q(s,a) = R(s,a) + \gamma \int_{s'\in S} \int_{a'\in A} Q(s',a') d\pi(a'\vert s') d\mathbb{P}_{s'\vert s,a}$$
 
 We have written this as an integral, but it can be written as a summation as well. This is the Bellman equation for $Q$.
 
-$$Q(s,a) = R(s,a) + \gamma \sum_{s'\in S}\mathbb{P}_{s'|s,a} \int_{a'\in A} Q(s',a') \pi(a'|s')$$
+$$Q(s,a) = R(s,a) + \gamma \sum_{s'\in S}\mathbb{P}_{s'\vert s,a} \int_{a'\in A} Q(s',a') \pi(a'\vert s')$$
 
 We write this in form of an integral to make clear what is being summed over, and what is being integrated over. There are some marginalizations going on here, and it is not clear what is being marginalized over what. Thus we use integral notation to be clear.
 
