@@ -130,3 +130,8 @@ We have written this as an integral, but it can be written as a summation as wel
 $$Q(s,a) = R(s,a) + \gamma \sum_{s'\in S}\mathbb{P}_{s'\vert s,a} \sum_{a'\in A} Q(s',a') \pi(a'\vert s')$$
 
 We write this in form of an integral to make clear what is being summed over, and what is being integrated over. There are some marginalizations going on here, and it is not clear what is being marginalized over what. Thus we use integral notation to be clear.
+
+
+This tells us that our $Q$ value for a given state is a function of our imminent reward and the discounted expected value of $Q$ at next state (which is a joint expectation between next state and current action).
+
+**Exercise**: Derive the Bellman equation for $V$ a similar way as we did for $Q$ above. That is, show that $V(s) = \int_{a\in A} (R(s,a) + \gamma \int_{s'\in S} V(s') d\mathbb{P}_{s'\vert s,a}) \pi(a\vert s) $. *Hint*: We integrate out the action space $a$ to get state marginal $V(s)$, thus $R(s,a)$ stays inside the integral (expectation).
