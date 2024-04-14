@@ -135,3 +135,21 @@ We write this in form of an integral to make clear what is being summed over, an
 This tells us that our $Q$ value for a given state is a function of our imminent reward and the discounted expected value of $Q$ at next state (which is a joint expectation between next state and current action).
 
 **Exercise**: Derive the Bellman equation for $V$ a similar way as we did for $Q$ above. That is, show that $V(s) = \int_{a\in A} (R(s,a) + \gamma \int_{s'\in S} V(s') d\mathbb{P}_{s'\vert s,a}) \pi(a\vert s) $. *Hint*: We integrate out the action space $a$ to get state marginal $V(s)$, thus $R(s,a)$ stays inside the integral (expectation).
+
+## Optimal Policy
+
+Instead of learning the value function, we can learn the optimal policy directly. The optimal policy is the policy that maximizes the expected return. We can define the optimal value function as the the value function that achieves that maximum possible value or $Q$.
+
+$$V^*(s) = \max_{\pi} V_{\pi}(s)$$
+$$Q^*(s,a) = \max_{\pi} Q_{\pi}(s,a)$$
+
+The optimal policy is the policy that achieves the optimal value function. We can define the optimal policy as:
+
+$$\pi^*(a\vert s) = \arg\max_{\pi} V_\pi(s)$$
+$$\pi^*(a\vert s) = \arg\max_{\pi} Q_\pi(s,a)$$
+
+Simply put, the optimal policy is the one that optimizes the value function or $Q$ function.
+
+The policy that maximizes the $Q$ function produces a policy that will be more optimal than the policy that maximizes the $V$ function. This is because the $Q$ function is a function of both the state and action spaces, and thus can capture more information about the environment than the $V$ function. We can see this from the following inequality:
+
+$$V^*(s) = \sup_{\pi} \int_{a\in A} Q(s,a)d\pi(a|s) \leq \int_{a\in A} \sup_\pi Q(s,a) d\pi(a|s) = \int_{a\in A} Q^*(s,a) d\pi(s|a)$$
