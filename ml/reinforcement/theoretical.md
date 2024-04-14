@@ -141,11 +141,13 @@ This tells us that our $Q$ value for a given state is a function of our imminent
 Instead of learning the value function, we can learn the optimal policy directly. The optimal policy is the policy that maximizes the expected return. We can define the optimal value function as the the value function that achieves that maximum possible value or $Q$.
 
 $$V^*(s) = \max_{\pi} V_{\pi}(s)$$
+
 $$Q^*(s,a) = \max_{\pi} Q_{\pi}(s,a)$$
 
 The optimal policy is the policy that achieves the optimal value function. We can define the optimal policy as:
 
 $$\pi^*(a\vert s) = \arg\max_{\pi} V_\pi(s)$$
+
 $$\pi^*(a\vert s) = \arg\max_{\pi} Q_\pi(s,a)$$
 
 Simply put, the optimal policy is the one that optimizes the value function or $Q$ function.
