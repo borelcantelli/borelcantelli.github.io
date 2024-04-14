@@ -19,13 +19,13 @@ $$Q_{\pi}(s,a) = \mathbb{E}(G_t \vert  S_t = s, a_t=a)$$
 
 Given a policy $\pi$, which is a probability distribution over the action space $a$:
 
-$$V_{\pi}(s,a) = \mathbb{E}(G_t \vert S_t=s)$$
+$$V_{\pi}(s) = \mathbb{E}(G_t \vert S_t=s)$$
 
 $$= \mathbb{E}_{a\sim \pi}(\mathbb{E}(G_t \vert S_t=s,a_t=a))$$
 
-$$= \mathbb{E}_{a\sim \pi}(Q_{\pi})$$
+$$= \mathbb{E}_{a\sim \pi}(Q_{\pi})(s,a)$$
 
-$$= \sum_{a\in A} Q_{\pi} \pi(a)$$
+$$= \sum_{a\in A} Q_{\pi}(s,a) \pi(a)$$
 
 Generalizing to:
 
