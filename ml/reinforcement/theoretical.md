@@ -210,21 +210,22 @@ We are guaranteed an improvement since
 
 $$
 \begin{align*}
-Q_\pi(s, \pi'(s)) &= \max_{a\in A} Q_\pi(s, a)\\
+Q_\pi(s, \pi'(s)) &= \sup_{a\in A} Q_\pi(s, a)\\
 \end{align*}
 $$
 
-As seen before, $\max_{a\in A}Q_\pi(s,a) \geq V_\pi(s)$ leveraging the maximal properties of averaging. So we have developed a policy that is better than the previous policy when conditioned on state $s$. 
+As seen before, $\sup_{a\in A}Q_\pi(s,a) \geq V_\pi(s)$ leveraging the maximal properties of averaging. So we have developed a policy that is better than the previous policy when conditioned on state $s$. 
 
 #### Policy Iteration
 
 Policy iteration is the iterative process of evaluating the policy, and then improving the policy. This process is repeated until the policy converges to the optimal policy. The policy iteration algorithm is as follows:
 
-1. Initialize the policy $\pi$ randomly, note the current state, and take an action.
+1. Initialize the policy $\pi$ randomly, note the current state.
 2. Evaluate the policy $\pi$ by calculating the $V$ function.
-3. Improve the policy by calculating the $Q$ function and updating the policy with the argmax.
+3. Take an action based on $\pi$, and improve the policy by calculating the $Q$ function and updating the policy with the argmax.
 4. Repeat steps 2 and 3 until the policy converges to the optimal policy.
 
+In step 3, we take an action based on the policy, and then update the policy based on the $Q$ function. This is called an **on-policy** algorithm, since we learn the policy while interacting with the environment using the said policy. An **off-policy** algorithm is one where we learn the policy while interacting with the environment using a different policy, for example, we can evaluate the policy by randomly sampling an action to take in our updates to $Q$.
 
-Unfortunately, the model for the environment is not typically known, so we cannot directly calculate the optimal $V$ or $Q$. We can only estimate these values. This is where we change the paradigm from dynamic programming, to a stochastic approach where the agent learns the optimal policy through experience.
+Unfortunately, the model for the environment is not typically known, so we cannot directly calculate the optimal $V$ or $Q$. We can only estimate these values. This is where we change the paradigm from dynamic programming, to a stochastic approach where the agent learns the optimal policy through experience. We explore some ways tp still extract a meaningful optimal policy despite the lack of a model in the next sections.
 
