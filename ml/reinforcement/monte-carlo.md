@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Learning with the Q function
+title: Learning with the Q Function
 parent: Reinforcement Learning
 grand_parent: Machine Learning
-nav_order: 1
+nav_order: 2
 has_children: true
 permalink: ml/reinforcement-learning/q-learning
 ---
