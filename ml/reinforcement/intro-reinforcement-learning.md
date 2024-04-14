@@ -29,7 +29,7 @@ $$
 
 This is the probability of observing that the next state is $s'$ with reward $r$, provided we are currently in state $s$ and took action $a$.
 
-We can marginalize out $R$ and get the state transitions: $\mathbb{P}(S'=s'\vert S=s, A=a)$ which we represent with $\mathbb{P}_{s'|s,a}$. 
+We can marginalize out $R$ and get the state transitions: $\mathbb{P}(S'=s'\vert S=s, A=a)$ which we represent with $\mathbb{P}_{s'\vert s,a}$. 
 
 As an agent can learn the transition probabilities, it can use this information to make better decisions. For example, if the agent knows that taking action $a$ in state $s$ will lead to state $s'$ with high probability, and that the reward for this transition is high, through experience, then the agent can take action $a$ in state $s$ with high confidence. Learning this probability puts an extra burden on the training process, so some models don't learn the transition probabilities, and instead focus on learning the policy. This gives rise to the notions of **model-free** and **model-based** reinforcement learning.
 
