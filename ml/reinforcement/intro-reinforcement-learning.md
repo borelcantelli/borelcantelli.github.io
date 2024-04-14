@@ -11,7 +11,7 @@ permalink: ml/reinforcement-learning
 
 Lorem ipsum
 
-$$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} = \sum_{i=1}^\infty \gamma^k R_{t+k+1}$$
+$$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + ... = \sum_{i=1}^\infty \gamma^k R_{t+k+1}$$
 
 $$V_{\pi}(s) = E(G_t | S_t=s)$$
 
