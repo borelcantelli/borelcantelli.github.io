@@ -125,7 +125,9 @@ $$\\
 Q(s,a) &= \mathbb{E}(R_{t+1} + \gamma V(s')\vert S_t=s, A_t=a) \\
 &= R(s,a) + \gamma \mathbb{E}(V(s') \vert S_t=s, A_t=a)\\ 
 &= R(s,a) + \gamma \mathbb{E}_{s'\vert s,a}(V(s'))\\ 
-&= R(s,a) + \gamma \int_{s'\in S} V(s') d\mathbb{P}_{s'\vert s,a} \\ 
+&= R(s,a) + \gamma \int_{s'\in S} V(s') d\mathbb{P}_{s'\vert s,a} 
+\end{align*}
+$$ 
 
 We know that $V(s)$ can be represented as $\int_{a\in A} \pi(a\vert s)Q(s,a) da$, which is the marginalization of $Q(s,a)$ over the distribution of actions:
 
