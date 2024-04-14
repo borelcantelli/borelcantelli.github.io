@@ -182,5 +182,5 @@ which makes an alternative formulation of $Q^*$ as
 
 $$Q^*(s,a) = R(s,a) + \gamma \int_{s'\in S} \sup_{a'\in A} Q^*(s',a') d\mathbb{P}_{s'\vert s,a}$$
 
-where the $V^*$ is replaced with the $\sup_{a'\in A} Q^*(s',a')$.
+where the $V^\*$ is replaced with the $\sup_{a'\in A} Q^\*(s',a')$.
 
