@@ -57,7 +57,7 @@ $$V(s) = E(R_{t+1} \| S_t=s) + \gamma E(G_{t+1} \| S_t=s)$$
 
 $$V(s) = E(R_{t+1} \| S_t=s) + \gamma E(E(G_{t+1}|S_{t+1} = s') \| S_t=s)$$
 
-We have equivalency by law of iterated expectation. That is, consider the space $(G, S_{t+1}, S_t)$. We can partition $S_t$ and evaluate integrate over $G_{t+1}$ for each $s$ partition. However, we can view this as partitioning $S_t$, and collecting the $S_{t+1}$ that lie in each $S_t$. Then we further partition $G_{t+1}$ for each $S_{t+1}$ partition, and integrate over the $S_t \times S_{t+1}$ pieces. These two give the same result. 
+We have equivalency by law of iterated expectation. That is, consider the space $(G, S_{t+1}, S_t)$. We can partition $S_t$ and evaluate integrate over $G_{t+1}$ for each $s$ partition, regardless of how $S_{t+1}$ will be partitioned. However, we can view this as partitioning $S_t$, and collecting the $S_{t+1}$ that lie in each $S_t$. Then we further partition $G_{t+1}$ for each $S_{t+1}$ partition, and integrate over the $S_t \times S_{t+1}$ pieces. These two give the same result. 
 
 Continuing from above:
 
