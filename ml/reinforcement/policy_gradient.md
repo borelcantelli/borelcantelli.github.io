@@ -34,15 +34,15 @@ Provided we have an expected rewards $J_\theta = \int_{s\in S} \int_{a\in A} Q_\
 
 $$
 \begin{align*}
-\Nabla_\theta J_\theta &= \Nabla_\theta \int_{s\in S} \int_{a\in A} Q_\pi(s,a) d\pi(a\vert s) d\mathbb{P}_{\pi}(s) \\
-&= \int_{s\in S} \int_{a\in A} Q_\pi(s,a) \Nabla_\theta d\pi(a\vert s; \theta) d\mathbb{P}_{\pi}(s) \\
-&= \int_{s\in S} \int_{a\in A} Q_\pi(s,a) \frac{\Nabla_\theta \pi(a\vert s; \theta)}{\pi(a\vert s; \theta)} d\pi(a\vert s; \theta) d\mathbb{P}_{\pi}(s) \\
-&= \int_{s\in S} \int_{a\in A} Q_\pi(s,a) \Nabla_\theta \log (\pi(a\vert s; \theta)) d\pi(a\vert s; \theta) d\mathbb{P}_{\pi}(s) \\
-&= \int_{a \in A} Q_\pi(s,a) \Nabla_\theta \log (\pi(a\vert s; \theta)) d\pi(a\vert s; \theta) \\
-&= \mathbb{E}_{\pi_\theta} (\Nabla_\theta \log (\pi(a\vert s; \theta))Q_\pi(s,a) )
+\nabla _\theta J_\theta &= \nabla _\theta \int_{s\in S} \int_{a\in A} Q_\pi(s,a) d\pi(a\vert s) d\mathbb{P}_{\pi}(s) \\
+&= \int_{s\in S} \int_{a\in A} Q_\pi(s,a) \nabla _\theta d\pi(a\vert s; \theta) d\mathbb{P}_{\pi}(s) \\
+&= \int_{s\in S} \int_{a\in A} Q_\pi(s,a) \frac{\nabla _\theta \pi(a\vert s; \theta)}{\pi(a\vert s; \theta)} d\pi(a\vert s; \theta) d\mathbb{P}_{\pi}(s) \\
+&= \int_{s\in S} \int_{a\in A} Q_\pi(s,a) \nabla _\theta \log (\pi(a\vert s; \theta)) d\pi(a\vert s; \theta) d\mathbb{P}_{\pi}(s) \\
+&= \int_{a \in A} Q_\pi(s,a) \nabla _\theta \log (\pi(a\vert s; \theta)) d\pi(a\vert s; \theta) \\
+&= \mathbb{E}_{\pi_\theta} (\nabla _\theta \log (\pi(a\vert s; \theta))Q_\pi(s,a) )
 \end{align*}
 $$
-So the gradient of $J(\theta)$ is $ \mathbb{E}_{\pi_\theta} (\Nabla_\theta \log (\pi(a\vert s; \theta))Q_\pi(s,a) )$. The full proof for the policy gradient theorem can be found in the Sutton and Barto 13.1. We skip several steps. One might wonder why $\pi$ and $\pi; \theta$ are applied differently, and this is due to the product rule which is used in the full proof. The key trick is the reparameterization trick, where $\frac{\nabla f}{f} = \Nabla \log f$.
+So the gradient of $J(\theta)$ is $ \mathbb{E}_{\pi_\theta} (\nabla _\theta \log (\pi(a\vert s; \theta))Q_\pi(s,a) )$. The full proof for the policy gradient theorem can be found in the Sutton and Barto 13.1. We skip several steps. One might wonder why $\pi$ and $\pi; \theta$ are applied differently, and this is due to the product rule which is used in the full proof. The key trick is the reparameterization trick, where $\frac{\nabla  f}{f} = \nabla  \log f$.
 
 
 
