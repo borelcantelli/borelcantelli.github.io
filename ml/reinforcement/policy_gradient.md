@@ -30,7 +30,11 @@ Policy gradient aims to find the use gradient ascent to maximize $J$ with respec
 
 ## Policy Gradient Theorem
 
-Provided we have an expected rewards $J_\theta = \int_{s\in S} \int_{a\in A} Q_\pi(s,a) d\pi(a\vert s) d\mathbb{P}_{\pi_\theta}(s)$, we wish to differentiate this with respect to $\theta$. 
+Provided we have an expected rewards 
+
+$$J_\theta = \int_{s\in S} \int_{a\in A} Q_\pi(s,a) d\pi(a\vert s) d\mathbb{P}_{\pi_\theta}(s)$$
+
+we wish to differentiate this with respect to $\theta$. 
 
 $$
 \begin{align*}
@@ -42,6 +46,7 @@ $$
 &= \mathbb{E}_{\pi_\theta} (\nabla _\theta \log (\pi(a\vert s; \theta))Q_\pi(s,a) )
 \end{align*}
 $$
+
 So the gradient of $J(\theta)$ is $ \mathbb{E}_{\pi_\theta} (\nabla _\theta \log (\pi(a\vert s; \theta))Q_\pi(s,a) )$. The full proof for the policy gradient theorem can be found in the Sutton and Barto 13.1. We skip several steps. One might wonder why $\pi$ and $\pi; \theta$ are applied differently, and this is due to the product rule which is used in the full proof. The key trick is the reparameterization trick, where $\frac{\nabla  f}{f} = \nabla  \log f$.
 
 
