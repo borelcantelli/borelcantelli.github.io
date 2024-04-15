@@ -41,10 +41,10 @@ V(S_t) &\leftarrow (1-\alpha)V(S_t) + \alpha G_t  \\
 \end{align*}
 $$
 
-**Exercise**: Derive the TD update for $Q(s,a)$ given a learning rate $\alpha$.
-<details>
-$Q(s_t, a_t) + \alpha (R_{t+1} + \gamma Q(s_{t+1}, a_t) - Q(s_t, a_t))$
-</details>
+Likewise for $Q$, 
+
+$$Q(s_t, a_t) + \alpha (R_{t+1} + \gamma Q(s_{t+1}, a_t) - Q(s_t, a_t))$$
+
 
 The TD update is a very powerful idea. It allows us to learn the value function without having to complete episodes. We are able to do this because $V_t$ can be defined as a function of $G_t$. This is the essence of bootstrapping. We can use the current estimate of $V$ to update the estimate of $V$.
 

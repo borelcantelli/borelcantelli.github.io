@@ -47,7 +47,7 @@ $$
 \end{align*}
 $$
 
-So the gradient of $J(\theta)$ is $\mathbb{E}_{\pi_\theta} (Q_\pi(s,a)\nabla_\theta \log(\pi(a\vert s; \theta)))$. The full proof for the policy gradient theorem can be found in the Sutton and Barto 13.1. We skip several steps. One might wonder why the gradient for $\pi$ and $\pi; \theta$ are applied differently, and this is due to the product rule which is used in the full proof. The key trick is the reparameterization trick, where $\frac{\nabla f}{f} = \nabla \log f$.
+So the gradient of $J(\theta)$ is $\mathbb{E}_{\pi_{\theta}} (Q_\pi(s,a)\nabla_\theta \log(\pi(a\vert s; \theta)))$. The full proof for the policy gradient theorem can be found in the Sutton and Barto 13.1. We skip several steps. One might wonder why the gradient for $\pi$ and $\pi; \theta$ are applied differently, and this is due to the product rule which is used in the full proof. The key trick is the reparameterization trick, where $\frac{\nabla f}{f} = \nabla \log f$.
 
 
 
