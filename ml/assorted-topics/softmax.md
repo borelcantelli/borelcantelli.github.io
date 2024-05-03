@@ -84,6 +84,6 @@ $$
 \lim_{T\to 0^+} \frac{1}{1 + \sum_{1 \leq i \neq j \leq n} e^{(x_{i}-x_{j})/T}} = 1
 $$
 
-This means that the softmax of the unique maximum $x_j$ will be 1. This means the softmax of $x_i$ for $i \neq j$ must be 0. 
+This means that the softmax of the unique maximum $x_j$ will be 1. This means the softmax of $x_i$ for $i \neq j$ must be 0. Sampling from this distribution will always give class $j$. As $x_j$ was the unique maximum, the softmax will provide a probability distribution that always selects $j$. So functionally, the softmax with temperature 0, is equivalent to the argmax function.
 
 From the steps taken above, its clear that if $x_j$ was not the unique maximum, the softmax of $x_j$ cannot be 1.
