@@ -69,7 +69,7 @@ What happens when we let $T \to 0$ from above (since $T > 0$)?
 Suppose $x_j$ was the unique maximum.
 
 $$
-\lim_{T\to 0^+} \frac{e^{x_j/T}}{e^{x_j/T}+\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}} = \lim_{T\to 0^+} \frac{1}{\frac{e^{x_j/T}+\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}}{e^{x_j}/T}}
+\lim_{T\to 0^+} \frac{e^{x_j/T}}{e^{x_j/T}+\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}} = \lim_{T\to 0^+} \frac{1}{\frac{e^{x_j/T}+\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}}{e^{x_j/T}}}
 $$
 
 Then we can divide the numerator and the denominator in the denominator of the overall fraction.
