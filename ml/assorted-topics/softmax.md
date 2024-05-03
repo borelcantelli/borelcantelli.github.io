@@ -88,7 +88,7 @@ This means that the softmax of the unique maximum $x_j$ will be 1. This means th
 
 From the steps taken above, its clear that if $x_j$ was not the unique maximum, the softmax of $x_j$ cannot be 1. If $x_j$ and $x_k$ where both maximums, then intuitively we would expect that class $j$ and $k$ share the mass of 1, i.e. the distribution induces by the softmax would pick $j$ and $k$ each 1/2. Generalizing, we expect if there were $m$ maximums, then the mass on each would be $1/m$. To see this, we modify the following proof in the unique maximum case:
 
-Let $M$ be the set of maximums of $(x_1,...,x_n)$, and without loss, let $x_j$ be in $M$, i.e. $x_j$ is an arbitrary maximum from $(x_1,...,x_n)$. Let $M$ have cardinality $\|M\|$. Every element in $M$ is equal to each other, since they are all maximums. We call it $m$ so that $x_j = m$.
+Let $M$ be the set of maximums of $(x_1,...,x_n)$, and without loss, let $x_j$ be in $M$, i.e. $x_j$ is an arbitrary maximum from $(x_1,...,x_n)$. Let $M$ have cardinality $\|M\|$. Every element in $M$ is equal to each other, since they are all maximums. We denote their value as $m$ so that $x_j = m$.
 
 $$
 \lim_{T\to 0^+} \frac{e^{x_j/T}}{\sum_{m \in M}e^{m/T}+\sum_{x_{i} \not\in M} e^{x_{i}/T}} = \lim_{T\to 0^+} \frac{e^{m/T}}{\|M\|e^{m/T}+\sum_{x_{i} \not\in M} e^{x_{i}/T}}
