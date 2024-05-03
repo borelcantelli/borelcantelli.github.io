@@ -12,6 +12,8 @@ permalink: ml/assorted-topics/softmax
 
 The softmax function is a popular transformation of discrete data in machine learning. It is used to convert numbers such as scores resulting from an activation in $\mathbb{R}$ to $[0, 1]$. It is not always understood though.
 
+## Log-Sum-Exp
+
 Consider the Log-Sum-Exp formula, $f: \mathbb{R}^n \to \mathbb{R}$
 
 $$
@@ -27,7 +29,7 @@ $$
 Because $e^x$ is a monotonically increasing function, and $x \leq e^x$ always
 
 $$
-e^{x_(n)} \leq \sum_{i=1}^n e^{x_i} \leq ne^{x_{(n)}}
+e^{x_{(n)}} \leq \sum_{i=1}^n e^{x_i} \leq ne^{x_{(n)}}
 $$
 
 At this point, the bound seems very wide. However we can take logs to shrink this bound.
@@ -36,5 +38,35 @@ $$
 x_{(n)} \leq \log \sum_{i=1}^n e^{x_i} \leq ne^{x_{(n)}} \leq x_{(n)} + \log n
 $$
 
-So the log-sum-exp function $f$ is at least as large as $x_{(n)}$ and is no larger than the max $+\log n$.
+So the log-sum-exp function $f$ is at least as large as $x_{(n)}$ and is no larger than the $x_{(n)}+\log n$.
 
+## Deriving Log-Sum-Exp
+
+What happens when we derive $f$ with respect to $x_i$? What does it mean? The classical interpretation of $\partial f / \partial x_i$ is that for a unit change in $x_i$, how much does $f$ change. That is, if I increase $x_i$, how much can I increase the estimate of the maximum, holding all else constant. $f$ is a monotonically increasing function with respect to each $x_i$, so we expect this derivative to be positive. This derivative turns out to be the softmax.
+
+$$
+\frac{\partial}{\partial x_j} \log \sum_{i=1}^n e^{x_{i}} = \frac{1}{\sum_{i=1}^n e^{x_{i}}} \frac{\partial}{\partial x_j}\sum_{i=1}^n e^{x_{i}} = \frac{e^{x_j}}{\sum_{i=1}^n e^{x_{i}}}
+$$
+
+This holds true for any $j$. This derivative is bounded by $(0,1]$ So increasing $x_i$ by a 1 will lead to a positive increase in the approximation of the maximum by at most 1. Of course, this insight is not very meaningful in the realm of machine learning, but it shows the relationship between softmax, and the approximation of the maximum value. 
+
+We typically just view the softmax as a way to form a distribution over the $n$ classes $(x_1,...,x_n)$ where $x_1$ represents how likely the first class is to be sampled. The denominator of the softmax provides a normalizing term to form valid probabilities.
+
+## Temperature
+
+Temperature, a non-negative value, is typically incorporated into the softmax function by dividing all $x_i$ by the temperature parameter $T$. Temperature serves to dampen or sharpen the value of $\frac{e^{x_i}}{\sum_{i=1}^n e^{x_i}}$. This modulates how much of an effect incrementing $x_i$ should have on the log-sum-exp approximation of the maximum. Nonetheless, the effect should still be bounded by 1. As such, when viewed as a probability mass function, the temperature will also modulate our probabilities of each class.
+
+What happens when we let $T \to \infty$? 
+
+$$
+\lim_{T\to\infty} \frac{e^{x_j/T}}{\sum_{i=1}^n e^{x_{i}/T}} = \frac{1}{\sum_{i=1}^n 1} = \frac{1}{n}
+$$
+
+This holds for any $j$. This means that the distribution over the classes becomes uniform.
+
+What happens when we let $T \to 0$ from above (since $T > 0$)?
+
+Suppose $x_j$ was the maximum.
+$$
+\lim_{T\to 0^+} \frac{e^{x_j/T}}{e^{x_j}+\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}} = \lim_{T\to 0^+} \frac{1}{\frac{e^{x_j}+\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}}{e^{x_j}}}
+$$
