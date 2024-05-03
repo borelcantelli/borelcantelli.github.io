@@ -66,7 +66,23 @@ This holds for any $j$. This means that the distribution over the classes become
 
 What happens when we let $T \to 0$ from above (since $T > 0$)?
 
-Suppose $x_j$ was the maximum.
+Suppose $x_j$ was the unique maximum.
 $$
-\lim_{T\to 0^+} \frac{e^{x_j/T}}{e^{x_j}+\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}} = \lim_{T\to 0^+} \frac{1}{\frac{e^{x_j}+\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}}{e^{x_j}}}
+\lim_{T\to 0^+} \frac{e^{x_j/T}}{e^{x_j/T}+\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}} = \lim_{T\to 0^+} \frac{1}{\frac{e^{x_j/T}+\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}}{e^{x_j}/T}}
 $$
+
+Then we can divide the numerator and the denominator in the denominator of the overall fraction.
+
+$$
+\lim_{T\to 0^+} \frac{1}{1 + \frac{\sum_{1 \leq i \neq j \leq n} e^{x_{i}/T}}{e^{x_j}}} = \frac{1}{1 + \sum_{1 \leq i \neq j \leq n} e^{(x_{i}-x_{j})/T}}
+$$
+
+Now we know that $x_j > x_i$ since it is the unique maximum. Then $x_i - x_j < 0$. Therefore, $e^{(x_{i}-x_{j})/T} \to 0$ as $T \to 0^+$. So we have:
+
+$$
+\lim_{T\to 0^+} \frac{1}{1 + \sum_{1 \leq i \neq j \leq n} e^{(x_{i}-x_{j})/T}} = 1
+$$
+
+This means that the softmax of the unique maximum $x_j$ will be 1. This means the softmax of $x_i$ for $i \neq j$ must be 0. 
+
+From the steps taken above, its clear that if $x_j$ was not the unique maximum, the softmax of $x_j$ cannot be 1.
