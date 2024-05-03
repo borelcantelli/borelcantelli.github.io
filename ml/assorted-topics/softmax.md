@@ -86,4 +86,10 @@ $$
 
 This means that the softmax of the unique maximum $x_j$ will be 1. This means the softmax of $x_i$ for $i \neq j$ must be 0. Sampling from this distribution will always give class $j$. As $x_j$ was the unique maximum, the softmax will provide a probability distribution that always selects $j$. So functionally, the softmax with temperature 0, is equivalent to the argmax function.
 
-From the steps taken above, its clear that if $x_j$ was not the unique maximum, the softmax of $x_j$ cannot be 1.
+From the steps taken above, its clear that if $x_j$ was not the unique maximum, the softmax of $x_j$ cannot be 1. If $x_j$ and $x_k$ where both maximums, then intuitively we would expect that class $j$ and $k$ share the mass of 1, i.e. the distribution induces by the softmax would pick $j$ and $k$ each 1/2. Generalizing, we expect if there were $m$ maximums, then the mass on each would be $1/m$. To see this, we modify the following proof in the unique maximum case:
+
+Let $M$ be the set of maximums of $(x_1,...,x_n)$, and without loss, let $x_j$ be in $M$, i.e. $x_j$ is an arbitrary maximum from $(x_1,...,x_n)$.
+
+$$
+\lim_{T\to 0^+} \frac{e^{x_j/T}}{\sum_{m \in M}e^{m/T}+\sum_{x_{i} \not\in M} e^{x_{i}/T}} = \lim_{T\to 0^+} \frac{1}{\frac{\sum_{m \in M}e^{m/T}+\sum_{x_i \not\in M} e^{x_{i}/T}}{e^{x_j/T}}}
+$$
