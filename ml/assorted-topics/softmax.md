@@ -130,14 +130,14 @@ $$
 \lim_{T\to 0^+} \frac{e^{f(x)/T}}{\int_{\mathcal{X}} e^{f(x)/T}\mu(dx)} = \lim_{T\to 0^+} \frac{1}{\frac{\int_{\mathcal{X}} e^{f(t)/T}\mu(dt)}{e^{f(x)/T}}}
 $$
 
-let $f^* = \sup f$, which is unique. Then:
+let $\mathcal{Z} = (z : f(z) = \sup f)$ and denote $f* = \sup f$, which is unique. Then:
 
 $$
-\lim_{T\to 0^+} \frac{1}{\frac{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{f(t)/T}\mu(dt) + \int_{\mathcal{Z}} e^{f^*/T}\mu(dt)}{e^{f(z)/T}}} = \lim_{T\to 0^+} \frac{1}{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{[f(t)-f(z)]/T}\mu(dt) - \frac{f^*}{T} \mu(\mathcal{Z})}  
+\lim_{T\to 0^+} \frac{1}{\frac{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{f(t)/T}\mu(dt) + \int_{\mathcal{Z}} e^{f^*/T}\mu(dt)}{e^{f(z)/T}}} = \lim_{T\to 0^+} \frac{1}{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{[f(t)-f(z)]/T}\mu(dt) - \int_{z\in\mathcal{Z}} \mu(dz)}  
 $$
 
 $$
-=\frac{T}{f^* \mu(\mathcal{Z})} = 0
+=\frac{1}{\mu(\mathcal{Z})}
 $$
 
-So the density will be 0 when $T \to 0^+$.
+So the density will have a mass of 0 anywhere on $\mathcal{X}\setminus \mathcal{Z}$ and a density of $\frac{1}{\mu(\mathcal{Z})}$ on $\mathcal{Z}$. When $\mu(\mathcal{Z}) = 0$, we have a degenerate density on $\mathcal{Z}$. This is an analog to the discrete softmax. Sampling from such a distribution will allow us to also find the supremum of $f$.
