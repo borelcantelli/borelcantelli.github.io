@@ -113,8 +113,30 @@ The second summation drops because of the same reason as before, $x_{i} < m$ so 
 Now consider the following log-sum-exp, for some $f : \mathcal{X} \to [0, \infty)$, and suppose $e^f$ is integrable on $\mathcal{X}$. Furthermore $\mathcal{X}$ is bounded. Consider the following equation:
 
 $$
-\frac{e^{f(x)/T}}{\int_{\mathcal{X}} e^{f(x)}\mu(dx)}
+\frac{e^{f(x)/T}}{\int_{\mathcal{X}} e^{f(x)/T}\mu(dx)}
 $$
 
-defined fro $x \in \mathcal{X}$. 
+defined for $x \in \mathcal{X}$. What happens when $T\to \infty$?
+
+$$
+\lim_{T\to\infty} \frac{e^{f(x)/T}}{\int_{\mathcal{X}} e^{f(x)/T}\mu(dx)} = \frac{1}{\int_\mathcal{X} \mu(dx)} = \frac{1}{\mu(\mathcal{X})}
+$$
+
+Thus when $T$ goes to infinity, the function value becomes the reciprocal of the measure of the whole set $\mathcal{X}$.
+
+How about when $T \to 0^+$?
+
+$$
+\lim_{T\to 0^+} \frac{e^{f(x)/T}}{\int_{\mathcal{X}} e^{f(x)/T}\mu(dx)} = \lim_{T\to 0^+} \frac{1}{\frac{\int_{\mathcal{X}} e^{f(t)/T}\mu(dt)}{e^{f(x)/T}}}
+$$
+
+Let $\mathcal{Z} := \{z : \sup f = f(z)\}$. Then:
+
+$$
+\lim_{T\to 0^+} \frac{1}{\frac{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{f(t)/T}\mu(dt) + \int_{\mathcal{Z}} e^{f(t)/T}\mu(dt)}{e^{f(z)/T}}} = \lim_{T\to 0^+} \frac{1}{\int_{\mathcal{X}} e^{[f(t)-f(z)]/T}\mu(dt)} 
+$$
+
+$$
+=\lim_{T\to 0^+} \frac{1}{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{[f(t)-f(z)]/T}\mu(dt)} = 
+$$
 
