@@ -130,13 +130,15 @@ $$
 \lim_{T\to 0^+} \frac{e^{f(x)/T}}{\int_{\mathcal{X}} e^{f(x)/T}\mu(dx)} = \lim_{T\to 0^+} \frac{1}{\frac{\int_{\mathcal{X}} e^{f(t)/T}\mu(dt)}{e^{f(x)/T}}}
 $$
 
-Let $\mathcal{Z} := \{z : \sup f = f(z)\}$. Then:
+let $f^* = \sup f$, which is unique. Then:
 
 $$
-\lim_{T\to 0^+} \frac{1}{\frac{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{f(t)/T}\mu(dt) + \int_{\mathcal{Z}} e^{f(t)/T}\mu(dt)}{e^{f(z)/T}}} = \lim_{T\to 0^+} \frac{1}{\int_{\mathcal{X}} e^{[f(t)-f(z)]/T}\mu(dt)} 
+\lim_{T\to 0^+} \frac{1}{\frac{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{f(t)/T}\mu(dt) + \int_{\mathcal{Z}} e^{f^*/T}\mu(dt)}{e^{f(z)/T}}} = \lim_{T\to 0^+} \frac{1}{\int_{\mathcal{X}} e^{[f(t)-f^*]/T}\mu(dt)} 
 $$
 
 $$
-=\lim_{T\to 0^+} \frac{1}{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{[f(t)-f(z)]/T}\mu(dt)} = 
+=\lim_{T\to 0^+} \frac{1}{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{[f(t)-f(z)]/T}\mu(dt) - f^* \mu(\mathcal{Z})} = \frac{1}{f^* \mu(\mathcal{Z})}
 $$
+
+So if the measure of the set values that achieve $\sup f$ has measure 0, the distribution that the softmax gives is undefined, i.e. shoots to infinity, and the measure everywhere else is 0. When we sample from this distribution, it will always give us the maxima of $f$, i.e. we will always sample elements of $\mathcal{Z}$ almost surely.
 
