@@ -130,7 +130,7 @@ $$
 \lim_{T\to 0^+} \frac{e^{f(x)/T}}{\int_{\mathcal{X}} e^{f(x)/T}\mu(dx)} = \lim_{T\to 0^+} \frac{1}{\frac{\int_{\mathcal{X}} e^{f(t)/T}\mu(dt)}{e^{f(x)/T}}}
 $$
 
-let $\mathcal{Z} = (z : f(z) = \sup f)$ and denote $f* = \sup f$, which is unique. Then:
+let $\mathcal{Z} = \{z : f(z) = \sup f \}$ and denote $f* = \sup f$, which is unique. Then:
 
 $$
 \lim_{T\to 0^+} \frac{1}{\frac{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{f(t)/T}\mu(dt) + \int_{\mathcal{Z}} e^{f^*/T}\mu(dt)}{e^{f(z)/T}}} = \lim_{T\to 0^+} \frac{1}{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{[f(t)-f(z)]/T}\mu(dt) - \int_{z\in\mathcal{Z}} \mu(dz)}  
