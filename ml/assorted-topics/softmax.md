@@ -110,7 +110,7 @@ The second summation drops because of the same reason as before, $x_{i} < m$ so 
 
 ## Continuous Case
 
-Now consider the following log-sum-exp, for some $f : \mathcal{X} \to [0, \infty)$, and suppose $e^f$ is integrable on $\mathcal{X}$. Furthermore $\mathcal{X}$ is bounded. Consider the following equation:
+Now consider the following log-sum-exp, for some $f : \mathcal{X} \to \mathbb{R}$, and suppose $e^f$ is integrable on $\mathcal{X}$. Furthermore $\mathcal{X}$ is bounded. Consider the following equation:
 
 $$
 \frac{e^{f(x)/T}}{\int_{\mathcal{X}} e^{f(x)/T}\mu(dx)}
