@@ -140,5 +140,5 @@ $$
 =\lim_{T\to 0^+} \frac{1}{\int_{\mathcal{X}\setminus \mathcal{Z}} e^{[f(t)-f(z)]/T}\mu(dt) - f^* \mu(\mathcal{Z})} = \frac{1}{f^* \mu(\mathcal{Z})}
 $$
 
-So if the measure of the set values that achieve $\sup f$ has measure 0, the distribution that the softmax gives is undefined, i.e. shoots to infinity, and the measure everywhere else is 0. When we sample from this distribution, it will always give us the maxima of $f$, i.e. we will always sample elements of $\mathcal{Z}$ almost surely.
+So if the measure of the set values that achieve $\sup f$ has measure 0, the distribution that the softmax gives is undefined, i.e. shoots to infinity, and the measure everywhere else is 0. When we sample from this distribution, it will always give us the maxima of $f$, i.e. we will always sample elements of $\mathcal{Z}$ almost surely. This is an analog to the discrete softmax.
 
