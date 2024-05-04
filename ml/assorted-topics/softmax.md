@@ -140,4 +140,4 @@ $$
 =\frac{1}{\mu(\mathcal{Z})}
 $$
 
-So the density will have a mass of 0 anywhere on $\mathcal{X}\setminus \mathcal{Z}$ and a density of $\frac{1}{\mu(\mathcal{Z})}$ on $\mathcal{Z}$. When $\mu(\mathcal{Z}) = 0$, we have a degenerate density on $\mathcal{Z}$. This is an analog to the discrete softmax. Sampling from such a distribution will allow us to also find the set $\{x : f(x) = \sup f\}$.
+So the density will have a mass of 0 anywhere on $\mathcal{X}\setminus \mathcal{Z}$ and a density of $\frac{1}{\mu(\mathcal{Z})}$ on $\mathcal{Z}$. When $\mu(\mathcal{Z}) = 0$ and is countable, we have a degenerate density on $\mathcal{Z}$. This is an analog to the discrete softmax. Sampling from such a distribution will allow us to also find the set $\{x : f(x) = \sup f\}$.
