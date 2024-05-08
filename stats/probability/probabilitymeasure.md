@@ -246,4 +246,10 @@ Thus $\lim X\_n = 0$ with probability 1 so we say $X\_n$ converges to 0 almost s
 
 **Exercise**: Let $X\_n$ be iid with $X\_n = 1$ with probability $\frac{1}{n^2}$ and $X\_n = 0$ with probability $1-\frac{1}{n^2}$. Show that $\sum_{n=1}^\infty X\_n < \infty$ almost surely.  
 
+**Exercise**: Let $X \sim \Exp(1)$. Prove that:
+$$
+    \lim\sup \frac{X-\log n}{\log\log n} \to 1\;\;\text{a.s.}
+$$
+(Hint: $\limsup$ to approach 1 means that in the infinity, the sequence does not exceed $1$, i.e. $\limsup A_n > 1 - \varepsilon$. What related statement can we make with $\liminf$ using the sequence to get the desired result?. Also, $\limsup A_n$ a.s. means $\mathbb{P}(\limsup A_n) = 1$. Use Borel Cantelli lemmas to make the correct arguments.)
+
 Now that we have a technology for discussing measures of limiting events, we are now ready to talk about expectation and integration, in particular regarding their limiting properties.
