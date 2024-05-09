@@ -246,7 +246,7 @@ Thus $\lim X\_n = 0$ with probability 1 so we say $X\_n$ converges to 0 almost s
 
 **Exercise**: Let $X\_n$ be iid with $X\_n = 1$ with probability $\frac{1}{n^2}$ and $X\_n = 0$ with probability $1-\frac{1}{n^2}$. Show that $\sum_{n=1}^\infty X\_n < \infty$ almost surely.  
 
-**Exercise**: Let $X \sim \Exp(1)$. Prove that:
+**Exercise**: Let $X \sim Exp(1)$. Prove that:
 $$
     \lim\sup \frac{X-\log n}{\log\log n} \to 1\;\;\text{a.s.}
 $$
